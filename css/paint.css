@@ -1,0 +1,49 @@
+div.paint {
+    background-image: linear-gradient(135deg, white 37.50%, black 37.50%, black 50%, white 50%, white 87.50%, black 87.50%, black 100%);
+    background-size: 5.66px 5.66px;
+    width: 628px; height: 510px; padding: 5px; 
+    border-radius: 30px; border: 1px solid black; box-shadow: 1px 2px 2px black;
+    position: relative;
+}
+span.dragBtn {
+    display: block; width: 35px; height: 35px;
+    border-radius: 50%; border: 1px solid black;
+    background: white url("../img/drag.png"); background-size: contain;
+    position: absolute; top: -5px; left: -5px; z-index: 3;
+    cursor: grab;
+}
+div.paintContainer {
+    width: 618px; height: 500px;
+    position: relative; z-index: 2;
+    cursor: auto;
+}
+.canvas { 
+    width: 618px; height: 500px; background: white;
+    border-radius: 30px; border: 1px solid black; 
+}
+.controls {
+    display: flex; flex-direction: column; align-items: center; 
+}
+.colorChips {
+    /* display: flex; */
+    position: absolute; right: -10px; bottom: 0;
+}
+.color {
+    width: 30px; height: 30px; margin-top: 5px;
+    border-radius: 50%; box-shadow: 1px 1px black;
+    cursor: pointer;
+}
+.btns button {
+    all: unset;
+    cursor: pointer;
+    width: 70px; padding: 5px; background: black;
+    font-size: 16px; color: white; text-align: center; letter-spacing: 1px;
+    border-radius: 10px;
+}
+.btns button:active {
+    transform: scale(0.98);
+}
+input#widthRange {
+    width: 100%; height: 10px; margin: 10px 0;
+}
+

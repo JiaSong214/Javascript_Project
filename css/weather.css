@@ -1,0 +1,30 @@
+div.weather {
+    width: 320px; height: 210px; padding: 0 20px; background: black;
+    border-radius: 30px; border: 1px solid black;
+    box-shadow: 1px 2px 2px black;
+    color: white;
+    position: relative;
+    cursor: grab;
+}
+span.icon {
+    display: block; width: 60px; height: 60px;
+    background: url("../img/cloud.png"); background-size: cover;
+    position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+}
+h1.timezone {
+    margin-top: 40px;
+    font-size: 36px; text-align: center; font-weight: lighter; line-height: 1;
+}
+p.summary {
+    margin-bottom: 10px;
+    font-size: 18px; text-align: center; font-weight: lighter;
+}
+div.temperature-section {
+    display: flex; justify-content: center;
+}
+h2.temperature {
+    font-size: 76px; text-align: center; font-weight: lighter;
+}
+div.temperature-section span {
+    font-size: 20px;
+}

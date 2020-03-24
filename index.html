@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/weather.css">
+    <link rel="stylesheet" href="css/calculator.css">
+    <link rel="stylesheet" href="css/todoList.css">
+    <link rel="stylesheet" href="css/paint.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script type="text/javascript" src="js/weather.js"></script>
+    <script type="text/javascript" src="js/calculator.js"></script>
+    <script type="text/javascript" src="js/todoList.js"></script>
+    <script type="text/javascript" src="js/paint.js"></script> 
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>Javascript Projects</title>
+</head>
+<body>
+    <div id="container">
+        <div class="weather element">
+            <span class="icon"></span>
+            <h1 class="timezone">Timezone</h1>
+            <p class="summary"></p>
+            <div class="temperature-section">
+                <h2 class="temperature">0</h2>
+                <span>o</span>
+            </div>
+        </div>
+        <div class="calculator element">
+            <div class="result">
+                <div class="history">
+                    <p class="history-value"></p>
+                </div>
+                <div class="output">
+                    <p class="output-value"></p>
+                </div>
+            </div>
+            <div class="keyboard">
+                <button class="operator" id="clear">C</button>
+                <button class="operator" id="backspace">CE</button>
+                <button class="operator" id="%">%</button>
+                <button class="operator" id="/">&#247;</button>
+                <button class="number" id="7">7</button>
+                <button class="number" id="8">8</button>
+                <button class="number" id="9">9</button>
+                <button class="operator" id="*">&times;</button>
+                <button class="number" id="4">4</button>
+                <button class="number" id="5">5</button>
+                <button class="number" id="6">6</button>
+                <button class="operator" id="-">-</button>
+                <button class="number" id="1">1</button>
+                <button class="number" id="2">2</button>
+                <button class="number" id="3">3</button>
+                <button class="operator" id="+">+</button>
+                <button class="empty" id="empty"></button>
+                <button class="number" id="0">0</button>
+                <button class="empty" id="empty"></button>
+                <button class="operator" id="=">=</button>
+            </div>
+        </div>
+        <div class="todoList">
+            <div class="todoListContainer">
+                <div class="topSection">
+                    <div class="today">
+                        <div class="date-container">
+                            <div class="date">0</div>
+                            <div>
+                                <div class="month"></div>
+                                <div class="year"></div>
+                            </div>
+                        </div>
+                        <div class="day">TUESDAY</div>
+                    </div>
+                </div>
+                <div class="contents">
+                    <ul class="list">
+                    </ul>
+                    <form action="" class="add-item">
+                        <input type="text" id="input" placeholder="Add To-do">
+                        <input class="add" type="submit" value="+">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="empty"></div>
+        <div class="paint">
+            <span class="dragBtn"></span>
+            <div class="paintContainer">
+                <canvas class="canvas"></canvas>
+                <div class="colorChips">
+                    <div class="color" style="background-color: black"> </div>
+                    <div class="color" style="background-color:white"></div>
+                    <div class="color" style="background-color:#ff3b30"></div>
+                    <div class="color" style="background-color:#ff9500"></div>
+                    <div class="color" style="background-color:#ffcc00"></div>
+                    <div class="color" style="background-color:#4cd963"></div>
+                    <div class="color" style="background-color:#5ac8fa"></div>
+                    <div class="color" style="background-color:#0579ff"></div>
+                    <div class="color" style="background-color:#5856d6 "></div>
+                </div>
+                <div class="controls">
+                    <div class="range">
+                        <input type="range" id="widthRange" min="0.1" max="5.0" value="2.5" step="0.1">
+                    </div>
+                    <div class="btns">
+                        <button id="mode">FILL</button>
+                        <button id="save">SAVE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
