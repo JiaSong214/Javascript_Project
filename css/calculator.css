@@ -2,6 +2,7 @@ div.calculator {
     width: 320px; height: 520px; 
     background: white; border-radius: 30px; border: 1px solid black; 
     box-shadow: 1px 2px 2px black;
+    position: relative; z-index: 1;
 }
 .result {
     height: 120px; padding: 20px;
@@ -10,7 +11,7 @@ div.calculator {
     height: 400px;
 }
 .history-value {
-    font-size: 20px; color: gray; text-align: right; line-height: 2;
+    font-size: 20px; color: #ffa500; text-align: right; line-height: 2;
 }
 .output-value {
     font-size: 52px; text-align: right;
@@ -22,36 +23,17 @@ div.keyboard {
 div.keyboard > button {
     width: auto; height: auto;  background: white;
     border-radius: 50%; border: none;
-    /* float: left; */
-    font-size: 16px; font-weight: bold;
+    font-size: 18px; font-weight: bold;
     cursor: pointer;
+    
 }
 div.keyboard > button:focus {
     outline: none;
 }
-div.keyboard > button.number:hover {
-    background: black; color: white; transition: .2s;
+div.keyboard > button:nth-child(1){
+    font-size: 24px; color: #ffa500;
 }
-div.keyboard > button:nth-child(1), div.keyboard > button:nth-child(2), div.keyboard > button:nth-child(3) {
-    background: #eaedef;
-}
-div.keyboard > button:nth-child(4) {
-    font-size: 18px;
-    background: #20beaa
-}
-div.keyboard > button:nth-child(8) {
-    font-size: 18px;
-    background: #ffa500
-}
-div.keyboard > button:nth-child(12) {
-    font-size: 18px;
-    background: #f08080
-}
-div.keyboard > button:nth-child(16) {
-    font-size: 18px;
-    background: #7d93e5
-}
-div.keyboard > button:nth-child(20) {
-    font-size: 18px;
-    background: #9477af
+div.keyboard > button:nth-child(4), div.keyboard > button:nth-child(8), div.keyboard > button:nth-child(12), div.keyboard > button:nth-child(16), div.keyboard > button:nth-child(20) {
+    font-size: 24px;
+    background: #eaedef; color: #ffa500;
 }

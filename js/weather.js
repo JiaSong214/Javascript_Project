@@ -33,20 +33,20 @@ window.addEventListener('load', ()=> {
                     const icon = document.querySelector(".icon");
                     if(data.currently.icon == "clear-day"){
                         weather.style.color = "black";
-                        background.style.backgroundColor= "rgb(242,228,140)";
+                        background.style.backgroundColor= "#A4D8EA";
                         icon.style.backgroundImage= "url('img/sun.png')";
                     }else if(data.currently.icon == "rain"){
-                        background.style.backgroundColor= "rgb(130, 130, 130)";
+                        background.style.backgroundColor= "#666666";
                         icon.style.backgroundImage= "url('img/rain.png')";
                     }else if(data.currently.icon == "snow" || data.currently.icon == "sleet"){
                         weather.style.color = "black";
-                        background.style.backgroundColor = "rgb(215,215,215)";
+                        background.style.backgroundColor = "#DADADA";
                         icon.style.backgroundImage= "url('img/snowflake.png')";
                     }else if(data.currently.icon == "wind" || data.currently.icon == "cloudy" ||  data.currently.icon == "partly-cloudy-day" || data.currently.icon == "fog"){
                         background.style.backgroundColor= "rgb(117, 117, 117)";
                         icon.style.backgroundImage= "url('img/cloud.png')";
                     }else if(data.currently.icon == "clear-night" || data.currently.icon == "partly-cloudy-night"){
-                        background.style.backgroundColor= "rgb(13, 0, 97)";
+                        background.style.backgroundColor= "#16306F";
                         icon.style.backgroundImage= "url('img/night.png')";
                     }
                 });

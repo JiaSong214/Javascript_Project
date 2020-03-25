@@ -11,24 +11,25 @@ window.addEventListener('load', ()=> {
     }
     function printOutput(num){
         if(num==""){
-            document.querySelector('.output-value').innerText = '';
+            document.querySelector('.output-value').innerText = num;
         }else{
             document.querySelector('.output-value').innerText = getFormattedNumber(num);
         }
     }
     function getFormattedNumber(num){
         if(num=="-"){
-            return '';
+            return "";
         }
-        var value = Number(num).toLocaleString("en");
-        return value;
+        var n = Number(num);
+	    var value = n.toLocaleString("en");
+	    return value;
     }
     function getReverseFormattedNumber(num){
-        return Number(num.replace('/,/g',''));
+        return Number(num.replace(/,/g,''));
     }
 
-    var operator = document.querySelectorAll('.operator');
-    for(var i = 0; i < operator.length; i++ ){
+    const operator = document.querySelectorAll('.operator');
+    for(i = 0; i < operator.length; i++ ){
         operator[i].addEventListener('click', function(){
             if(this.id == "clear"){
                 printHistory('');
@@ -42,13 +43,14 @@ window.addEventListener('load', ()=> {
             }else{
                 var output = getOutput();
                 var history = getHistory();
-                if(output == "" && history != ""){
+
+                if(output == "" && history != ""){ //output이 비어있고, history가 있는 경우에
                     if(isNaN(history[history.length-1])){
                         history = history.substr(0, history.length-1);
                     }
-                }else if(output != "" || history != ""){
-                    output = output ==""?
-                    output:getReverseFormattedNumber(output);
+                }else if(output != "" || history != ""){ //output이 있거나, history가 있으면
+                    output = output == "" ? output:getReverseFormattedNumber(output);
+                    //output이 비어있으면 output 반환, 비어있지 않으면 일반 스트링으로 변환해서 반환
                     history = history + output;
                     if(this.id == "="){
                         var result = eval(history);
