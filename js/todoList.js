@@ -56,6 +56,7 @@ window.addEventListener('load', ()=> {
 
         const remove = document.createElement("span");
         remove.classList.add("remove");
+        remove.innerHTML="&times;"
         remove.addEventListener("click", removeToDo);
 
         const list = document.querySelector(".list");
