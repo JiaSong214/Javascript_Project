@@ -1,23 +1,61 @@
 window.addEventListener('load', ()=> {
     
     const canvas = document.querySelector(".canvas");
-    const ctx = canvas.getContext("2d"); 
+    const ctx = canvas.getContext("2d");
+    const tools_container = document.querySelector(".tools");
+    const tools = tools_container.querySelectorAll("button");
     const colors = document.querySelectorAll(".color");
-    const range = document.getElementById("widthRange");
-    const mode = document.getElementById("mode");
-    const saveBtn = document.getElementById("save");
+    // const saveBtn = document.getElementById("save");
     
     canvas.width = 618;
-    canvas.height = 500;
+    canvas.height = 600;
 
+    //default setting
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.strokeStyle = "black";
     ctx.fillStyle = "black";
-    ctx.lineWidth = 2.5;
+    ctx.lineWidth = 1;
 
     let painting = false;
     let filling = false;
+
+    //pick a tool
+    for(i=0; i<tools.length; i++){
+        tools[i].addEventListener("click", function(event){
+            for(j=0; j<tools.length; j++){
+                tools[j].style.top = "0px";
+                painting = false;
+                filling = false;
+                ctx.globalAlpha = 1;
+            }
+            event.target.style.top = "-20px";
+        });
+    }
+
+    //tool setting
+    const pencil = document.querySelector("#pencil");
+    const pen = document.querySelector("#pen");
+    const marker = document.querySelector("#marker");
+    const paint = document.querySelector("#paint");
+
+    pencil.addEventListener("click", function(){
+        painting = true;
+        ctx.lineWidth = 1;
+    });
+    pen.addEventListener("click", function(){
+        painting = true;
+        ctx.lineWidth = 3;
+    });
+    marker.addEventListener("click", function(){
+        painting = true;
+        ctx.lineWidth = 10;
+        ctx.globalAlpha = 0.01;
+    });
+    paint.addEventListener("click", function(){
+        filling = true;
+    });
+
 
     function startPainting(){
         painting = true;
@@ -51,16 +89,6 @@ window.addEventListener('load', ()=> {
         ctx.lineWidth = size;
     };
 
-    function handleModeClick() {
-        if(filling === true){
-            filling = false;
-            mode.innerText = "FILL";
-        }else{
-            filling = true;
-            mode.innerText = "PAINT";
-        };
-    };
-
     function handleCanvasClick(){
         if(filling){
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -92,16 +120,8 @@ window.addEventListener('load', ()=> {
         color.addEventListener("click", handleColorClick)
     );
 
-    if(range){
-        range.addEventListener("input", handleRangeChange);
-    };
-
-    if(mode){
-        mode.addEventListener("click", handleModeClick);
-    };
-
-    if(saveBtn){
-        saveBtn.addEventListener("click", handleSaveClick);
-    };
+    // if(saveBtn){
+    //     saveBtn.addEventListener("click", handleSaveClick);
+    // };
 
 });
