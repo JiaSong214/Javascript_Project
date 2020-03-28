@@ -1,19 +1,19 @@
 window.addEventListener('load', ()=> {
     
     function getHistory(){
-        return document.querySelector('.history-value').innerText;
+        return document.querySelector('.history_value').innerText;
     }
     function printHistory(num){
-        document.querySelector('.history-value').innerText = num;
+        document.querySelector('.history_value').innerText = num;
     }
     function getOutput(){
-        return document.querySelector('.output-value').innerText;
+        return document.querySelector('.output_value').innerText;
     }
     function printOutput(num){
         if(num==""){
-            document.querySelector('.output-value').innerText = num;
+            document.querySelector('.output_value').innerText = num;
         }else{
-            document.querySelector('.output-value').innerText = getFormattedNumber(num);
+            document.querySelector('.output_value').innerText = getFormattedNumber(num);
         }
     }
     function getFormattedNumber(num){

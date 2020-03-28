@@ -1,39 +1,33 @@
 div.calculator {
-    width: 320px; height: 520px; 
+    width: 320px;
     background: black; border-radius: 10px; 
-    position: relative; z-index: 1;
 }
-.result {
-    height: 120px; padding: 20px;
+div.calculator-result {
+    width: 100%; height: 120px; padding: 30px 20px 0;
     position: relative;
 }
-.keyboard {
-    height: 400px;
+p.history_value {
+    font-size: 28px; color: gray; text-align: right;
 }
-.history-value {
-    font-size: 28px; color: gray; text-align: right; line-height: 2;
-}
-.output-value {
-    position: absolute; width: 90%; bottom: -30px;
+p.output_value {
+    position: absolute; right: 20px; bottom: -20px;
     font-size: 68px; color: white; text-align: right;
 }
-div.keyboard {
+div.calculator-keyboard {
+    height: 392.5px; padding: 20px;
     display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: repeat(5,1fr); grid-gap: 10px;
-    padding: 25px 20px;
 }
-div.keyboard > button {
-    width: auto; height: auto; background: #333333;
-    border-radius: 50%; border: none;
-    font-size: 24px; color: white; font-weight: normal;
+div.calculator-keyboard > button {
+    all: unset;
+    background: #333333; border-radius: 50%;
+    font-size: 24px; color: white; font-weight: normal; text-align: center;
     cursor: pointer;
 }
-div.keyboard > button:focus {
-    outline: none;
-}
-div.keyboard > button:nth-child(1), div.keyboard > button:nth-child(2), div.keyboard > button:nth-child(3){
-    background: #a5a5a5; color: black;
-}
-div.keyboard > button:nth-child(4), div.keyboard > button:nth-child(8), div.keyboard > button:nth-child(12), div.keyboard > button:nth-child(16), div.keyboard > button:nth-child(20) {
+div.calculator-keyboard .operator {
+    background: #f19939;
     font-size: 30px;
-    background: #f19939; 
+}
+div.calculator-keyboard > button:nth-child(1), div.calculator-keyboard > button:nth-child(2), div.calculator-keyboard > button:nth-child(3){
+    background: #a5a5a5; 
+    font-size: 24px; color: black;
 }

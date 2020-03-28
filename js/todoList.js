@@ -11,16 +11,16 @@ window.addEventListener('load', ()=> {
     const year = today.getFullYear();
     const day = dayNames[today.getDay()];
     
-    document.querySelector(".date").innerText = date;
-    document.querySelector(".year").innerText = year;
-    document.querySelector(".month").innerText = month;
-    document.querySelector(".day").innerText = day;
+    document.querySelector(".todoList-date").innerText = date;
+    document.querySelector(".todoList-year").innerText = year;
+    document.querySelector(".todoList-month").innerText = month;
+    document.querySelector(".todoList-day").innerText = day;
 
 
     //to-do list
-    const toDoForm = document.querySelector(".add-item");
-    const toDoInput = toDoForm.querySelector("input");
-    const toDoList = document.querySelector(".list"); 
+    const toDoList = document.querySelector(".todoList-list"); 
+    const toDoForm = document.querySelector(".add_todo");
+    const toDoInput = toDoForm.querySelector("#todoList-input");
 
     const TODOS_LS = 'toDos';
     let toDos = [];
@@ -35,38 +35,38 @@ window.addEventListener('load', ()=> {
     }
 
     //submit new to-do
-    toDoForm.addEventListener("submit", function(){
+    toDoForm.addEventListener("submit", function(event){
         event.preventDefault();
         addToDo(toDoInput.value);
         toDoInput.value = "";
     }); 
 
     function addToDo(todo){
-        const item = document.createElement("li");
-        item.classList.add("item");
-        item.id = toDos.length + 1;
+        const todo_item = document.createElement("li");
+        todo_item.classList.add("todo_item");
+        todo_item.id = toDos.length + 1;
 
-        const text = document.createElement("p");
-        text.classList.add("text");
-        text.innerText = todo;
+        const todo_text = document.createElement("p");
+        todo_text.classList.add("todo_text");
+        todo_text.innerText = todo;
 
-        const compelete = document.createElement("span");
-        compelete.classList.add("compelete");
-        compelete.addEventListener("click", compeleteToDo);
+        const compelete_todo = document.createElement("span");
+        compelete_todo.classList.add("compelete_todo");
+        compelete_todo.addEventListener("click", compeleteToDo);
 
-        const remove = document.createElement("span");
-        remove.classList.add("remove");
-        remove.innerHTML="&times;"
-        remove.addEventListener("click", removeToDo);
+        const remove_todo = document.createElement("span");
+        remove_todo.classList.add("remove_todo");
+        remove_todo.innerHTML="&times;"
+        remove_todo.addEventListener("click", removeToDo);
 
-        const list = document.querySelector(".list");
-        list.appendChild(item);
-        item.append(compelete, text, remove);
+        const todo_list = document.querySelector(".todoList-list");
+        todo_list.appendChild(todo_item);
+        todo_item.append(compelete_todo, todo_text, remove_todo);
 
         const toDoObject =  {
             text : todo,
             compelete: "No",
-            id : item.id
+            id : todo_item.id
         };
         toDos.push(toDoObject); 
         saveToDos();
@@ -74,11 +74,11 @@ window.addEventListener('load', ()=> {
 
     function removeToDo(event){
         const removeBtn = event.target;
-        const item = removeBtn.parentNode;
-        toDoList.removeChild(item);
+        const todo_item = removeBtn.parentNode;
+        toDoList.removeChild(todo_item);
 
         const cleanToDos =  toDos.filter(function(toDo){ 
-            return parseInt(toDo.id) !== parseInt(item.id);
+            return parseInt(toDo.id) !== parseInt(todo_item.id);
         });
         toDos = cleanToDos;
         saveToDos();

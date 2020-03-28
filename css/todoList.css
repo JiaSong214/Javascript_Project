@@ -1,80 +1,85 @@
-div.todoListContainer {
-    width: 320px; padding: 0 20px; 
+div.todoList {
+    border-radius: 10px;
+}
+div.todoList_container {
+    width: 320px; padding: 20px; 
     background: url("../img/todolist.png") no-repeat; background-size: cover;
     border-radius: 10px;
 }
-div.topSection {
-    width: 100%; height: 120px; padding:  30px 0;
-    border-bottom: 1px solid rgb(162, 162, 162);
+div.date_section {
+    width: 100%; padding: 20px 0;
+    display: flex; justify-content: space-between; align-items: center; 
 }
-div.today {
-    display: flex; justify-content: space-between; align-items: center;  
-}
-div.date-container {
+div.date_section > div {
     display: flex; align-items: center;
 }
-div.date {
+div.todoList-date {
     margin-right: 5px;
     font-size: 56px;
 }
-div.day {
+div.todoList-day {
     font-size: 18px; font-weight: bold;
 }
-div.contents {
-    width: 100%; padding: 10px 0; 
+div.list_section {
+    width: 100%;
 }
-li.item {
+ul.todoList-list {
+    padding: 10px 0;
+    border-top: 1px solid rgb(162, 162, 162);
+    border-bottom: 1px solid rgb(162, 162, 162);
+}
+li.todo_item {
     display: flex; align-items: center;
     position: relative;
     font-size: 18px; line-height: 2.5;
 }
-span.compelete {
+span.compelete_todo {
     width: 20px; height: 20px; margin-right: 20px;
     border: 1px solid rgb(162, 162, 162); border-radius: 50%;
-    position: relative; z-index: 2;
+    position: relative;
     cursor: pointer;
 }
-li.compelete span.compelete {
+li.compelete span.compelete_todo {
     background: rgb(255, 192, 76);
-    border: 1px solid rgb(255, 192, 76);
+    border: 1px solid rgb(255, 192, 76); 
+    box-shadow: -1px -1px 1px rgb(171, 171, 171);
 }
-li.compelete span.compelete::after {
+li.compelete span.compelete_todo::after {
     content: "V"; display: block;
     font-size: 16px; color: white;
-    position: absolute; top: -9px; left: 4px; z-index: 1;
+    position: absolute; top: -9px; left: 4px;
 }
-li.compelete p.text {
+li.compelete p.todo_text {
     color: gray; text-decoration: line-through;
 }
-span.remove {
+span.remove_todo {
     width: 20px;
     position: absolute; right: 0;
-    font-size: 20px; color: transparent; text-align: center;
+    font-size: 20px; color: transparent; 
 }
-li.item:hover span.remove {
-    color: red;
+li.todo_item:hover span.remove_todo {
+    color: rgb(227, 0, 0);
     cursor: pointer;
 }
-form.add-item {
-    width: 100%; padding: 30px 0; 
+form.add_todo {
+    width: 100%; padding-top: 20px;
     display: flex; justify-content: space-between; align-items: center;
-    border-top: 1px solid rgb(162, 162, 162);
 }
-#input {
+#todoList-input {
     width: 80%; height: 30px; border: none; background: transparent;
     font-size: 16px;
 }
-#input:focus {
+#todoList-input:focus {
     outline: none;
     border-bottom: 1px solid lightgray;
 }
-input.add {
+input.todoList-addBtn {
     width: 30px; height: 30px; 
     border-radius: 50%; background: black; 
     position: relative;
     font-size: 18px; color: white;
     cursor: pointer;
 }
-input.add:focus {
+input.todoList-addBtn:focus {
     outline: none;
 }

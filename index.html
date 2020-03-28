@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/todoList.css">
     <link rel="stylesheet" href="css/paint.css">
     <link rel="stylesheet" href="css/index.css">
-    <!-- <script type="text/javascript" src="js/weather.js"></script> -->
+    <script type="text/javascript" src="js/weather.js"></script>
     <script type="text/javascript" src="js/calculator.js"></script>
     <script type="text/javascript" src="js/todoList.js"></script>
     <script type="text/javascript" src="js/paint.js"></script> 
@@ -24,32 +24,32 @@
                 <span></span>
                 <span></span>
             </div>
-            <h1 class="timezone">Timezone</h1>
-            <p class="summary"></p>
-            <div class="temperature-section">
-                <h2 class="temperature">0</h2>
+            <h1 class="weather-timezone">Timezone</h1>
+            <p class="weather-summary"></p>
+            <div class="weather-temperature_section">
+                <h2 class="weather-temperature">0</h2>
                 <span>o</span>
             </div>
-            <ul class="daily_weather">
+            <ul class="weather-weekly">
                 <li>
                     <div class="weather-day">SUN</div>
-                    <div class="weather-weather"></div>
+                    <div class="weather-icon"></div>
                 </li>
                 <li>
                     <div class="weather-day"></div>
-                    <div class="weather-weather"></div>
+                    <div class="weather-icon"></div>
                 </li>
                 <li>
                     <div class="weather-day"></div>
-                    <div class="weather-weather"></div>
+                    <div class="weather-icon"></div>
                 </li>
                 <li>
                     <div class="weather-day"></div>
-                    <div class="weather-weather"></div>
+                    <div class="weather-icon"></div>
                 </li>
                 <li>
                     <div class="weather-day"></div>
-                    <div class="weather-weather"></div>
+                    <div class="weather-icon"></div>
                 </li>
             </ul>
         </div>
@@ -59,15 +59,11 @@
                 <span></span>
                 <span></span>
             </div>
-            <div class="result">
-                <div class="history">
-                    <p class="history-value"></p>
-                </div>
-                <div class="output">
-                    <p class="output-value"></p>
-                </div>
+            <div class="calculator-result">
+                <p class="history_value"></p>
+                <p class="output_value"></p>
             </div>
-            <div class="keyboard">
+            <div class="calculator-keyboard">
                 <button class="operator" id="clear">C</button>
                 <button class="operator" id="backspace">CE</button>
                 <button class="operator" id="%">%</button>
@@ -96,25 +92,23 @@
                 <span></span>
                 <span></span>
             </div>
-            <div class="todoListContainer">
-                <div class="topSection">
-                    <div class="today">
-                        <div class="date-container">
-                            <div class="date">0</div>
-                            <div>
-                                <div class="month"></div>
-                                <div class="year"></div>
-                            </div>
+            <div class="todoList_container">
+                <div class="date_section">
+                    <div>
+                        <div class="todoList-date"></div>
+                        <div>
+                            <div class="todoList-month"></div>
+                            <div class="todoList-year"></div>
                         </div>
-                        <div class="day">TUESDAY</div>
                     </div>
+                    <div class="todoList-day"></div>
                 </div>
-                <div class="contents">
-                    <ul class="list">
+                <div class="list_section">
+                    <ul class="todoList-list">
                     </ul>
-                    <form action="" class="add-item">
-                        <input type="text" id="input" placeholder="Add To-do">
-                        <input class="add" type="submit" value="+">
+                    <form action="" class="add_todo">
+                        <input type="text" id="todoList-input" placeholder="Add To-do">
+                        <input class="todoList-addBtn" type="submit" value="+">
                     </form>
                 </div>
             </div>
@@ -144,9 +138,6 @@
                     <div class="color" style="background-color:#0579ff"></div>
                     <div class="color" style="background-color:#5856d6 "></div>
                 </div>
-                <!-- <div class="range">
-                    <input type="range" id="widthRange" min="0.1" max="5.0" value="2.5" step="0.1">
-                </div> -->
                 <!-- <button id="save"></button> -->
             </div>
         </div>
