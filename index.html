@@ -8,11 +8,17 @@
     <link rel="stylesheet" href="css/calculator.css">
     <link rel="stylesheet" href="css/todoList.css">
     <link rel="stylesheet" href="css/paint.css">
+    <link rel="stylesheet" href="css/game.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script defer src=https://cdn.JsDelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js></script>
+    <!-- <script type="text/javascript" src="../p5.min.js"></script> -->
+    <!-- <script type="text/javascript" src="../p5.collide2d.min.js"></script> -->
     <script type="text/javascript" src="js/weather.js"></script>
     <script type="text/javascript" src="js/calculator.js"></script>
     <script type="text/javascript" src="js/todoList.js"></script>
-    <script type="text/javascript" src="js/paint.js"></script> 
+    <script type="text/javascript" src="js/paint.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <title>Javascript Projects</title>
 </head>
@@ -115,7 +121,7 @@
         </div>
         <div class="paint">
             <div class="drag_bar">
-                <span></span>
+                <span class="test_button"></span>
                 <span></span>
                 <span></span>
             </div>
@@ -138,8 +144,16 @@
                     <div class="color" style="background-color:#0579ff"></div>
                     <div class="color" style="background-color:#5856d6 "></div>
                 </div>
-                <!-- <button id="save"></button> -->
             </div>
+        </div>
+        <div class="game">
+            <div class="drag_bar">
+                <span class="test_button"></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div id="game_canvas_frame"></div>
+        
         </div>
     </div>
 </body>

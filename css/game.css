@@ -1,0 +1,8 @@
+div.game {
+    width: 800px; height: 350px;
+}
+div.game > div#game_canvas_frame {
+    width: 800px; height: 350px;
+    overflow: hidden;
+    border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+}

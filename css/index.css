@@ -1,3 +1,8 @@
+/*
+1. paint.js 페인트 마우스 다운 문제 해결하기
+2. index.js 드롭 이벤트 대상 도큐먼트여야하는 것 해결하기
+3. 투두리스트 로딩시 버벅거리는 현상 해결하기
+*/
 * {
     margin: 0; padding: 0; box-sizing: border-box; list-style: none;
 }
@@ -28,6 +33,9 @@
 }
 #container > div.paint {
     right: 0; top: 0;
+}
+#container > div.game {
+    right: 10%; bottom: 0;
 }
 
 div.drag_bar {

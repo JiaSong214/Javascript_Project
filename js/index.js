@@ -3,27 +3,33 @@ window.addEventListener('load', ()=> {
     const dragBar = document.querySelectorAll(".drag_bar");
     let mouseDown = false;
 
-    for(i=0; i < dragBar.length; i++){
-        dragBar[i].addEventListener('mousedown', function(event) {
+    for(i=0; i<dragBar.length; i++){
+        dragBar[i].addEventListener('mousedown', function(event){
             mouseDown = true;
             this.parentElement.style.zIndex = "99";
-            // this.parentElement.style.opacity = "0.5";
-
-            this.addEventListener('mousemove', function(event) {
-                event.preventDefault();
-                if(mouseDown){
-                    this.parentElement.style.left = (event.clientX - this.parentElement.offsetWidth + 100 ) + 'px';
-                    this.parentElement.style.top  = (event.clientY - 30 ) + 'px';
-                }
-            }, true);
-
-            window.addEventListener('mouseup', function() {
-                mouseDown = false;
-                this.parentElement.style.zIndex = "1";
-                // this.parentElement.style.opacity = "1";
-            }, true);
+            this.parentElement.style.opacity = "0.8";
         });
     };
 
+    document.addEventListener('mousemove', function(event){
+        event.preventDefault();
+        const element = event.target.parentElement;
+        if(mouseDown == true && element.parentElement.id == "container"){
+            element.style.left = (event.clientX - element.offsetWidth + 100 ) + 'px';
+            element.style.top  = (event.clientY - 30 ) + 'px';
+        }
+        }, true);
+
+    document.addEventListener('mouseup', function(){       
+        mouseDown = false;
+        for(i=0; i<dragBar.length; i++){
+            dragBar[i].parentElement.style.zIndex = "1";
+            dragBar[i].parentElement.style.opacity = "1";
+        }
+    }, true);
+    const test = document.querySelector(".test_button");
+    test.addEventListener("click", function(){
+        alert("click");
+    })
 
 });

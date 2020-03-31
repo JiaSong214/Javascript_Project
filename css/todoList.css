@@ -1,10 +1,10 @@
-div.todoList {
-    border-radius: 10px;
+#container > div.todoList {
+    border-radius: 10px; box-shadow: none;
 }
 div.todoList_container {
     width: 320px; padding: 20px; 
     background: url("../img/todolist.png") no-repeat; background-size: cover;
-    border-radius: 10px;
+    border-radius: 10px; box-shadow: 3px 3px 20px -2px rgb(0, 0, 0);
 }
 div.date_section {
     width: 100%; padding: 20px 0;
@@ -29,9 +29,13 @@ ul.todoList-list {
     border-bottom: 1px solid rgb(162, 162, 162);
 }
 li.todo_item {
+    padding: 10px 0;
     display: flex; align-items: center;
     position: relative;
-    font-size: 18px; line-height: 2.5;
+    font-size: 16px;
+}
+p.todo_text {
+    width: 200px;
 }
 span.compelete_todo {
     width: 20px; height: 20px; margin-right: 20px;
@@ -46,8 +50,8 @@ li.compelete span.compelete_todo {
 }
 li.compelete span.compelete_todo::after {
     content: "V"; display: block;
-    font-size: 16px; color: white;
-    position: absolute; top: -9px; left: 4px;
+    font-size: 18px; color: white;
+    position: absolute; top: 0px; left: 3px;
 }
 li.compelete p.todo_text {
     color: gray; text-decoration: line-through;
