@@ -1,7 +1,6 @@
 /*
-1. paint.js 페인트 마우스 다운 문제 해결하기
-2. index.js 드롭 이벤트 대상 도큐먼트여야하는 것 해결하기
-3. 투두리스트 로딩시 버벅거리는 현상 해결하기
+- 투두리스트 게시물 생성날짜 찍히게 하기
+- 게임 스코어 만들기
 */
 * {
     margin: 0; padding: 0; box-sizing: border-box; list-style: none;
@@ -11,6 +10,7 @@
     width: 100vw; height: 100vh;
     display: flex; justify-content: center; 
     background: url("../img/background.jpg") no-repeat; background-size: cover;
+    position: relative;
     overflow: hidden;
 }
 #container {
@@ -19,8 +19,12 @@
     position: relative;
 }
 #container > div {
+    display: block;
     position: absolute;
     box-shadow: 3px 3px 20px -2px rgb(0, 0, 0);
+}
+#container > div.invisible {
+    display: none;
 }
 #container > div.weather {
     left: 0; top: 0;
@@ -52,10 +56,51 @@ div.drag_bar > span {
 div.drag_bar > span:nth-child(1) {
     margin-left: 10px;
     background: #ee6665; border: 1px solid #cc5656;
+    font-size: 12px; color: #753030; font-weight: bold; line-height: 1; text-indent: 1.5px;
+    cursor: pointer;
 }
 div.drag_bar > span:nth-child(2) {
     background: #f1c14f; border: 1px solid #cca241;
 }
 div.drag_bar > span:nth-child(3) {
     background: #62cb5d; border: 1px solid #57b352;
+}
+
+#task_bar {
+    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 90;
+    width: 400px; height: 82px; padding: 10px 20px; background: rgb(255,255,255,0.5);
+    border-top-left-radius: 10px; border-top-right-radius: 10px;
+    box-shadow: 3px 3px 20px -2px rgb(0, 0, 0);
+    display: flex; justify-content: space-around;
+}
+#task_bar > div {
+    width: 60px; height: 60px;
+    position: relative;
+    cursor: pointer;
+}
+#task_bar > div::after {
+    display: block; content: "";
+    width: 6px; height: 6px; background: transparent;
+    border-radius: 50%;
+    position: absolute; bottom: -10px; left: 27px;
+    transition: .5s;
+}
+#task_bar > div.active::after {
+    background: rgb(48, 48, 48);
+    transition: .5s;
+}
+div.weather_icon {
+    background: url("../img/weather_icon.png") no-repeat; background-size: contain;
+}
+div.calculator_icon {
+    background: url("../img/calculator_icon.png") no-repeat; background-size: contain;
+}
+div.todoList_icon {
+    background: url("../img/todoList_icon.png") no-repeat; background-size: contain;
+}
+div.paint_icon {
+    background: url("../img/paint_icon.png") no-repeat; background-size: contain;
+}
+div.game_icon {
+    background: url("../img/game_icon.png") no-repeat; background-size: contain;
 }

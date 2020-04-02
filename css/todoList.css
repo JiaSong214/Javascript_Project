@@ -32,10 +32,10 @@ li.todo_item {
     padding: 10px 0;
     display: flex; align-items: center;
     position: relative;
-    font-size: 16px;
 }
 p.todo_text {
     width: 200px;
+    font-size: 16px;
 }
 span.compelete_todo {
     width: 20px; height: 20px; margin-right: 20px;

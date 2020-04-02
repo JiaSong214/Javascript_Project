@@ -1,24 +1,24 @@
 let dino;
 let cactuses = [];
-let cactuses02 = [];
 
 let backgroundImage;
-// let backgroundCloud;
+let game_startImage;
+let game_overImage;
 let dinoImage = [];
 let cactusImage;
-let cactusImage02;
 
 let backgroundX1 = 0;
 let backgroundX2;
 
 function preload(){
     backgroundImage = loadImage("img/background.png");
+    game_startImage = loadImage("img/game_start.png");
+    game_overImage = loadImage("img/game_over.png");
     // backgroundCloud = loadImage("img/backgroundCloud.png");
     for(i=0; i<2; i++){
         dinoImage[i] = loadImage("img/dino"+[i]+".png");
     }
     cactusImage = loadImage("img/cactus0.png");
-    cactusImage02 = loadImage("img/cactus1.png");
 }
 
 function setup(){
@@ -28,53 +28,51 @@ function setup(){
     dino = new Dino();
     backgroundX2 = width;
 }
-
+let game_start = false;
 function keyPressed(){
     if(key == " "){
-        dino.jump();
+        game_start = true;
+        draw();
+        if(key == " "){
+            dino.jump();
+        }
     }
 }
 
 function draw(){
-    if(random(1)<0.005){
-        cactuses.push(new Cactus());
-    }
-    if(random(1)<0.005){
-        cactuses02.push(new Cactus02());
-    }
-    // background(backgroundImage);
-    
-	image(backgroundImage, backgroundX1, 0, width, height);
-    image(backgroundImage, backgroundX2, 0, width, height);
-    
-    let backgroundSpeed = 7;
-
-    backgroundX1 -= backgroundSpeed;
-    backgroundX2 -= backgroundSpeed;
-
-    if (backgroundX1 < -width){
-        backgroundX1 = width;
-    }
-    if (backgroundX2 < -width){
-        backgroundX2 = width;
-    }
-
-    for( let c of cactuses){
-        c.show();
-        c.move();
-        if(dino.hits(c)){
-            console.log("game over");
-            // noLoop();
+    if(game_start == false){
+        image(backgroundImage, backgroundX1, 0, width, height);
+        image(game_startImage, 200, 100, 400, 113);
+    }else if(game_start == true){
+        if(random(1)<0.005){
+            cactuses.push(new Cactus());
         }
-    }
-    for( let c02 of cactuses02){
-        c02.show();
-        c02.move();
-        if(dino.hits(c02)){
+        image(backgroundImage, backgroundX1, 0, width, height);
+        image(backgroundImage, backgroundX2, 0, width, height);
+        let backgroundSpeed = 7;
+    
+        backgroundX1 -= backgroundSpeed;
+        backgroundX2 -= backgroundSpeed;
+    
+        if (backgroundX1 < -width){
+            backgroundX1 = width;
         }
+        if (backgroundX2 < -width){
+            backgroundX2 = width;
+        }
+    
+        for( let c of cactuses){
+            c.show();
+            c.move();
+            if(dino.hits(c)){
+                image(game_overImage, 250, 150, 300, 20);
+                noLoop();
+            }
+        }
+
+        dino.show();
+        dino.move();
     }
-    dino.show();
-    dino.move();
 }
 
 class Dino {
@@ -108,7 +106,7 @@ class Dino {
 
     show(){
         var num = Math.round(Math.random()*1)
-        image(dinoImage[num], this.x, this.y-50, this.r, this.r);
+        image(dinoImage[num], this.x, this.y-40, this.r, this.r);
     }
 }
 
@@ -122,21 +120,6 @@ class Cactus {
         this.x -= 7;
     }
     show(){
-        image(cactusImage, this.x, this.y-50, this.r, this.r);
-    }
-}
-
-class Cactus02 {
-    constructor(){
-        this.r = 40;
-        this.x = width;
-        this.y = height-this.r;
-    }
-    move(){
-        this.x -= 7;
-    }
-    show(){
-        // var num = Math.round(Math.random()*1);
-        image(cactusImage02, this.x, this.y-50, this.r, this.r);
+        image(cactusImage, this.x, this.y-40, this.r, this.r);
     }
 }

@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
     <script defer src=https://cdn.JsDelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js></script>
-    <!-- <script type="text/javascript" src="../p5.min.js"></script> -->
-    <!-- <script type="text/javascript" src="../p5.collide2d.min.js"></script> -->
     <script type="text/javascript" src="js/weather.js"></script>
     <script type="text/javascript" src="js/calculator.js"></script>
     <script type="text/javascript" src="js/todoList.js"></script>
@@ -26,7 +24,7 @@
     <div id="container">
         <div class="weather">
             <div class="drag_bar">
-                <span></span>
+                <span>&times;</span>
                 <span></span>
                 <span></span>
             </div>
@@ -61,7 +59,7 @@
         </div>
         <div class="calculator">
             <div class="drag_bar">
-                <span></span>
+                <span>&times;</span>
                 <span></span>
                 <span></span>
             </div>
@@ -94,7 +92,7 @@
         </div>
         <div class="todoList">
             <div class="drag_bar">
-                <span></span>
+                <span>&times;</span>
                 <span></span>
                 <span></span>
             </div>
@@ -121,7 +119,7 @@
         </div>
         <div class="paint">
             <div class="drag_bar">
-                <span class="test_button"></span>
+                <span>&times;</span>
                 <span></span>
                 <span></span>
             </div>
@@ -148,13 +146,19 @@
         </div>
         <div class="game">
             <div class="drag_bar">
-                <span class="test_button"></span>
+                <span>&times;</span>
                 <span></span>
                 <span></span>
             </div>
             <div id="game_canvas_frame"></div>
-        
         </div>
+    </div>
+    <div id="task_bar">
+        <div class="weather_icon"></div>
+        <div class="calculator_icon"></div>
+        <div class="todoList_icon"></div>
+        <div class="paint_icon"></div>
+        <div class="game_icon"></div>
     </div>
 </body>
 </html>

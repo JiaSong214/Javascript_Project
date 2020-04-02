@@ -52,8 +52,5 @@ window.addEventListener('load', ()=> {
                     }
                 });
         });
-    }else{
-        document.querySelector('.summary').innerText = "Can't use your location information.";
     }
-
 }); 

@@ -1,11 +1,10 @@
 window.addEventListener('load', ()=> {
     //date
     const today = new Date();
-
     const monthNames = ["JAN", "FEB", "MAR", "APRIL", "MAY", "JUNE",
     "JULY", "AUG", "SEP", "OCT", "NOV", "DEC"];
     const dayNames = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
-
+    
     const date = today.getDate();
     const month = monthNames[today.getMonth()];
     const year = today.getFullYear();
@@ -15,7 +14,6 @@ window.addEventListener('load', ()=> {
     document.querySelector(".todoList-year").innerText = year;
     document.querySelector(".todoList-month").innerText = month;
     document.querySelector(".todoList-day").innerText = day;
-
 
     //to-do list
     const toDoList = document.querySelector(".todoList-list"); 
@@ -33,6 +31,7 @@ window.addEventListener('load', ()=> {
     }else if(localStorage.getItem(TODOS_LS) == null){
         addToDo("Study Javascript :)");
     }
+    
 
     //submit new to-do
     toDoForm.addEventListener("submit", function(event){
@@ -40,6 +39,7 @@ window.addEventListener('load', ()=> {
         addToDo(toDoInput.value);
         toDoInput.value = "";
     }); 
+
 
     function addToDo(todo){
         const todo_item = document.createElement("li");
@@ -49,6 +49,11 @@ window.addEventListener('load', ()=> {
         const todo_text = document.createElement("p");
         todo_text.classList.add("todo_text");
         todo_text.innerText = todo;
+
+        // const todo_created_time = document.createElement("p");
+        // todo_created_time.classList.add("todo_created_time");
+        // const created_time = today.getHours()+":"+today.getMinutes()+" on "+month+" "+date;
+        // todo_created_time.innerText = "Created at "+ created_time;
 
         const compelete_todo = document.createElement("span");
         compelete_todo.classList.add("compelete_todo");
@@ -61,12 +66,16 @@ window.addEventListener('load', ()=> {
 
         const todo_list = document.querySelector(".todoList-list");
         todo_list.appendChild(todo_item);
+        // const todo_contents_box = document.createElement("div");
+        // todo_contents_box.classList.add("todo_contents_box");
         todo_item.append(compelete_todo, todo_text, remove_todo);
+        // todo_contents_box.append(todo_text, todo_created_time);
 
         const toDoObject =  {
+            id : todo_item.id,
             text : todo,
             compelete: "No",
-            id : todo_item.id
+            // created_at: created_time
         };
         toDos.push(toDoObject); 
         saveToDos();
