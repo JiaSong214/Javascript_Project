@@ -7,6 +7,8 @@ let game_overImage;
 let dinoImage = [];
 let cactusImage;
 
+let game_start = false;
+
 let backgroundX1 = 0;
 let backgroundX2;
 
@@ -28,7 +30,8 @@ function setup(){
     dino = new Dino();
     backgroundX2 = width;
 }
-let game_start = false;
+
+
 function keyPressed(){
     if(key == " "){
         game_start = true;
@@ -44,7 +47,7 @@ function draw(){
         image(backgroundImage, backgroundX1, 0, width, height);
         image(game_startImage, 200, 100, 400, 113);
     }else if(game_start == true){
-        if(random(1)<0.005){
+        if(random(1)<0.007){
             cactuses.push(new Cactus());
         }
         image(backgroundImage, backgroundX1, 0, width, height);
@@ -61,15 +64,15 @@ function draw(){
             backgroundX2 = width;
         }
     
-        for( let c of cactuses){
+        for(let c of cactuses){
             c.show();
             c.move();
             if(dino.hits(c)){
                 image(game_overImage, 250, 150, 300, 20);
                 noLoop();
+                game_start = false;
             }
         }
-
         dino.show();
         dino.move();
     }
@@ -77,49 +80,42 @@ function draw(){
 
 class Dino {
     constructor(){
-        this.r = 50;
-        this.x = this.r;
-        this.y = height - this.r;
+        this.y = height-50;
         this.vy = 0;
         this.gravity = 2;
     }
 
     jump(){
-        if(this.y == height-this.r){
+        if(this.y >= height-180){
             this.vy = -20;
         }
     }
 
     hits(cactus){
-        let x1 = this.x + this.r * 0.5;
-        let y1 = this.y + this.r * 0.5;
-        let x2 = cactus .x + cactus .r * 0.5;
-        let y2 = cactus .y + cactus .r * 0.5;
-        return collideCircleCircle(x1, y1, this.r, x2, y2, cactus.r);
+        return collideRectRect(50+10,this.y,10,10 ,cactus.x, cactus.y,30,60)
     }
 
     move(){
         this.y += this.vy;
         this.vy += this.gravity;
-        this.y = constrain(this.y , 0, height-this.r);
+        this.y = constrain(this.y , 0, height-50);
     }
 
     show(){
         var num = Math.round(Math.random()*1)
-        image(dinoImage[num], this.x, this.y-40, this.r, this.r);
+        image(dinoImage[num], 50, this.y-40, 50, 50);
     }
 }
 
 class Cactus {
     constructor(){
-        this.r = 50;
         this.x = width;
-        this.y = height-this.r;
+        this.y = height-100;
     }
     move(){
         this.x -= 7;
     }
     show(){
-        image(cactusImage, this.x, this.y-40, this.r, this.r);
+        image(cactusImage, this.x, this.y, 30, 60);
     }
 }

@@ -12,17 +12,17 @@
     <link rel="stylesheet" href="css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
     <script defer src=https://cdn.JsDelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js></script>
-    <script type="text/javascript" src="js/weather.js"></script>
-    <script type="text/javascript" src="js/calculator.js"></script>
-    <script type="text/javascript" src="js/todoList.js"></script>
-    <script type="text/javascript" src="js/paint.js"></script>
-    <script type="text/javascript" src="js/game.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script defer src="js/weather.js"></script>
+    <script defer src="js/calculator.js"></script>
+    <script defer src="js/todoList.js"></script>
+    <script defer src="js/paint.js"></script>
+    <script defer src="js/game.js"></script>
+    <script defer src="js/index.js"></script>
     <title>Javascript Projects</title>
 </head>
 <body>
     <div id="container">
-        <div class="weather">
+        <section class="weather">
             <div class="drag_bar">
                 <span>&times;</span>
                 <span></span>
@@ -56,8 +56,8 @@
                     <div class="weather-icon"></div>
                 </li>
             </ul>
-        </div>
-        <div class="calculator">
+        </section>
+        <section class="calculator">
             <div class="drag_bar">
                 <span>&times;</span>
                 <span></span>
@@ -89,8 +89,8 @@
                 <button class="empty" id="empty"></button>
                 <button class="operator" id="=">=</button>
             </div>
-        </div>
-        <div class="todoList">
+        </section>
+        <section class="todoList">
             <div class="drag_bar">
                 <span>&times;</span>
                 <span></span>
@@ -116,15 +116,15 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="paint">
+        </section>
+        <section class="paint">
             <div class="drag_bar">
                 <span>&times;</span>
                 <span></span>
                 <span></span>
             </div>
-            <canvas class="canvas"></canvas>
-            <div class="controls">
+            <canvas class="paint_canvas"></canvas>
+            <div class="paint_controls">
                 <div class="tools">
                     <button id="pencil"></button>
                     <button id="pen"></button>
@@ -143,15 +143,15 @@
                     <div class="color" style="background-color:#5856d6 "></div>
                 </div>
             </div>
-        </div>
-        <div class="game">
+        </section>
+        <section class="game">
             <div class="drag_bar">
                 <span>&times;</span>
                 <span></span>
                 <span></span>
             </div>
             <div id="game_canvas_frame"></div>
-        </div>
+        </section>
     </div>
     <div id="task_bar">
         <div class="weather_icon"></div>

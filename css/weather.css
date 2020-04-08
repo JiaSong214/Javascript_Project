@@ -1,21 +1,21 @@
-div.weather {
+section.weather {
     width: 320px; padding: 40px 20px 30px; background-image: linear-gradient(#95c2db, #65a3c4);
     border-radius: 10px;
     color: white;
 }
 h1.weather-timezone {
-    font-size: 36px; text-align: center; font-weight: lighter; line-height: 1;
+    font-size: 40px; text-align: center; font-weight: 100; line-height: 1;
 }
 p.weather-summary {
     margin-bottom: 10px;
-    font-size: 18px; text-align: center; font-weight: lighter;
+    font-size: 18px; text-align: center; font-weight: 100;
 }
 div.weather-temperature_section {
     margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid white;
     display: flex; justify-content: center;
 }
 h2.weather-temperature {
-    font-size: 96px; text-align: center; font-weight: lighter;
+    font-size: 96px; text-align: center; font-weight: 100;
 }
 div.weather-temperature_section span {
     font-size: 20px;
@@ -29,7 +29,7 @@ ul.weather-weekly > li {
 }
 ul.weather-weekly div.weather-day {
     margin-bottom: 10px;
-    font-size: 18px; font-weight: lighter; text-align: center;
+    font-size: 18px; font-weight: 300; text-align: center;
 }
 ul.weather-weekly div.weather-icon {
     width: 100%; height: 30px;

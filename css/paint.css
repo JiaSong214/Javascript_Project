@@ -1,62 +1,55 @@
-div.paint {
+section.paint {
     width: 618px; height: 600px;
     position: relative;
 }
-.canvas { 
+canvas.paint_canvas { 
     width: 100%; height: 100%; background: white;
     border-radius: 10px;
 }
-.controls {
+div.paint_controls {
     width: 100%; padding:  30px 20px; background: white; 
     border-top: 1px solid rgb(225, 225, 225); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
     display: flex; justify-content: space-between;
     position: absolute; bottom: 0;
     overflow: hidden;
 }
-.tools {
+div.tools {
     display: flex; position: relative;
 }
-.tools > button {
+div.tools > button {
     all: unset; position: absolute; top: 0;
 }
-.tools > button#pencil {
+div.tools > button#pencil {
     width: 50px; height: 150px; top: -20px;
     background: url("../img/pencil.png") no-repeat center center; background-size: contain;
 }
-.tools > button#pen {
+div.tools > button#pen {
     width: 50px; height: 150px; left: 50px;
     background: url("../img/pen.png") no-repeat center center; background-size: contain;
 }
-.tools > button#marker {
+div.tools > button#marker {
     width: 50px; height: 150px; left: 100px;
     background: url("../img/marker.png") no-repeat center center; background-size: contain;
 }
-.tools > button#paint {
+div.tools > button#paint {
     width: 60px; height: 150px; left: 150px;
     background: url("../img/paint.png") no-repeat center center; background-size: contain;
 }
-.colorChips {
+div.colorChips {
     display: flex; 
 }
-.color {
+div.color {
     width: 30px; height: 30px; margin-right: 5px; 
     border-radius: 50%; box-shadow: -1px -1px 2px rgb(126, 126, 126);
     position: relative;
     cursor: pointer;
 }
-.color.on {
+div.color.on {
     box-shadow: -2px -2px 3px rgb(126, 126, 126);;
 }
-.color.on::after {
+div.color.on::after {
     content: ""; display: block;
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     width: 23px; height: 23px; border-radius: 50px; border: 1px solid white;
 }
-/* button#save {
-    all: unset;
-    cursor: pointer; 
-    width: 40px; height: 30px;
-    background: url("../img/download.png") no-repeat; background-size: contain;
-}
-*/
 

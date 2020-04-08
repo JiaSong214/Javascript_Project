@@ -1,4 +1,4 @@
-#container > div.todoList {
+#container > section.todoList {
     border-radius: 10px; box-shadow: none;
 }
 div.todoList_container {
@@ -18,7 +18,7 @@ div.todoList-date {
     font-size: 56px;
 }
 div.todoList-day {
-    font-size: 18px; font-weight: bold;
+    font-size: 18px; font-weight: 600;
 }
 div.list_section {
     width: 100%;
@@ -36,6 +36,9 @@ li.todo_item {
 p.todo_text {
     width: 200px;
     font-size: 16px;
+}
+p.todo_created_time {
+    font-size: 12px; color: gray;
 }
 span.compelete_todo {
     width: 20px; height: 20px; margin-right: 20px;

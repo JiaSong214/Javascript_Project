@@ -1,4 +1,4 @@
-div.calculator {
+section.calculator {
     width: 320px; height: 520px;
     background: black; border-radius: 10px; 
 }
@@ -18,7 +18,7 @@ div.calculator-keyboard {
 div.calculator-keyboard > button {
     all: unset;
     background: #333333; border-radius: 50%;
-    font-size: 24px; color: white; font-weight: normal; text-align: center;
+    font-size: 24px; color: white; font-weight: 400; text-align: center;
     cursor: pointer;
 }
 div.calculator-keyboard .operator {
