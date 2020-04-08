@@ -1,6 +1,3 @@
-/*
-- 게임 재시작 버튼 만들기
-*/
 * {
     margin: 0; padding: 0; box-sizing: border-box; list-style: none;
 }
@@ -30,16 +27,16 @@
     left: 0; top: 0;
 }
 #container > section.calculator {
-    left: 0; bottom: -140px;
+    left: 680px; top: 0;
 }
 #container > section.todoList {
     left: 340px; top: 0;
 }
 #container > section.paint {
-    right: 0; top: 0;
+    right: 10%; top: 50px;
 }
 #container > section.game {
-    right: 10%; bottom: 0;
+    left: 20%; top: 30%;
 }
 
 div.drag_bar {
@@ -99,8 +96,21 @@ div.todoList_icon {
     background: url("../img/todoList_icon.png") no-repeat; background-size: contain;
 }
 div.paint_icon {
-    background: url("../img/paint_icon.png") no-repeat; background-size: contain;
+    background: url("../img/paint_icon.png") no-repeat; background-size: contain; 
+    position: relateive; animation: icon_animation 5s ease-in 3s infinite;
 }
 div.game_icon {
     background: url("../img/game_icon.png") no-repeat; background-size: contain;
+    position: relateive; animation: icon_animation 5s ease-in 5s infinite;
+
+}
+@keyframes icon_animation{
+    0% { left: -3px }
+    1% { left: 3px; }
+    2% { left: -3px; }
+    3% { left: 3px; }
+    4% { left: -3px; }
+    5% { left: 3px; }
+    6% { left: 0; }
+    100% { left: 0; }
 }

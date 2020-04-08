@@ -22,14 +22,15 @@ if(localStorage.getItem(TODOS_LS) !== null){
         addToDo(toDo.compelete, toDo.text, toDo.created_time);
     });
 }else if(localStorage.getItem(TODOS_LS) == null){
-    addToDo("No", "Study Javascript :)", "a month ago");
+    addToDo("Yes", "Study Javascript :)", "a month ago");
+    addToDo("No", "Go for a walk", "3 days ago")
 }
 
 
 toDoForm.addEventListener("submit", function(event){
     event.preventDefault();
     const submit_time = new Date();
-    const current_time = submit_time.getHours()+":"+submit_time.getMinutes()+" on "+monthNames[submit_time.getMonth()]+" "+submit_time.getDate();
+    const current_time = "at "+submit_time.getHours()+":"+submit_time.getMinutes()+" on "+monthNames[submit_time.getMonth()]+" "+submit_time.getDate();
     addToDo("No", toDoInput.value, current_time);
     toDoInput.value = "";
 }); 
@@ -46,7 +47,7 @@ function addToDo(compelete, text, created_time){
 
     const todo_created_time = document.createElement("p");
     todo_created_time.classList.add("todo_created_time");
-    todo_created_time.innerText = "Created at "+ created_time;
+    todo_created_time.innerText = "Created "+ created_time;
 
     const compelete_todo = document.createElement("span");
     compelete_todo.classList.add("compelete_todo");
