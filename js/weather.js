@@ -30,14 +30,26 @@ if(navigator.geolocation){
                 summary.innerText = data.currently.summary;
                 temperature.innerText = currentCelsius;
 
-                if(data.currently.icon == "clear-day"){
-                    weather.style.backgroundImage= "linear-gradient(#95c2db, #65a3c4)";
-                }else if(data.currently.icon == "rain"|| data.currently.icon == "wind" || data.currently.icon == "cloudy" ||  data.currently.icon == "partly-cloudy-day" || data.currently.icon == "fog"){
-                    weather.style.backgroundImage= "linear-gradient(#7a8a9a, #515c68)";
-                }else if(data.currently.icon == "snow" || data.currently.icon == "sleet"){
-                    weather.style.backgroundImage= "linear-gradient(#87929d, #91a8be)";
-                }else if(data.currently.icon == "clear-night" || data.currently.icon == "partly-cloudy-night"){
-                    weather.style.backgroundImage= "linear-gradient(#0f122b, #1e223f)";
+                
+                switch (data.currently.icon) {
+                    case 'clear-day':
+                        weather.style.backgroundImage= 'linear-gradient(#95c2db, #65a3c4)';
+                        break;
+                    case 'rain':
+                    case 'wind':
+                    case 'cloudy':
+                    case 'partly-cloudy-day':
+                    case 'fog':
+                        weather.style.backgroundImage= 'linear-gradient(#7a8a9a, #515c68)';
+                        break;
+                    case 'snow':
+                    case 'sleet':
+                        weather.style.backgroundImage= 'linear-gradient(#87929d, #91a8be)';
+                        break;
+                    case 'clear-night':
+                    case 'partly-cloudy-night':
+                        weather.style.backgroundImage= 'linear-gradient(#0f122b, #1e223f)';
+                        break;
                 }
 
                 for(i=0; i<weeklyDay.length; i++){
@@ -45,9 +57,10 @@ if(navigator.geolocation){
                     const dayNames = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU", "FRI"];
                     
                     weeklyDay[i].innerText = dayNames[today.getDay()+i+1];
-                    weeklyIcon[i].style.background = "url('img/"+data.daily.data[i+1].icon+".png') no-repeat center top";
+                    weeklyIcon[i].style.background = `url('img/${data.daily.data[i+1].icon}.png') no-repeat center top`;
                     weeklyIcon[i].style.backgroundSize = "25px";
                 }
+
             });
     });
 }

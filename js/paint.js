@@ -15,62 +15,62 @@ canvas.height = 600;
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 ctx.strokeStyle = "black";
-ctx.fillStyle = "black";
+ctx.fillStyle = "white";
 ctx.lineWidth = 1;
 
 let drawing = false;
 let filling = false;
 
+
 //pick a tool
-for(i=0; i<tools.length; i++){
-    tools[i].addEventListener("click", function(event){
-        for(j=0; j<tools.length; j++){
-            tools[j].style.top = "0px";
+tools.forEach(tool => {
+    tool.addEventListener('click', (event) => {
+        //make everything to default setting
+        tools.forEach(eachTool => {
+            eachTool.style.top = '0px';
             drawing = false;
             filling = false;
             ctx.globalAlpha = 1;
-        }
-        event.target.style.top = "-20px";
-    });
-};
+        })
+        event.target.style.top = '-20px';
+    })
+})
+
 
 //tool setting
-pencil.addEventListener("click", function(){
+pencil.addEventListener('click', () => {
     ctx.lineWidth = 1;
 });
-pen.addEventListener("click", function(){
+pen.addEventListener('click', () => {
     ctx.lineWidth = 3;
 });
-marker.addEventListener("click", function(){
+marker.addEventListener('click', () => {
     ctx.lineWidth = 10;
     ctx.globalAlpha = 0.01;
 });
-paint.addEventListener("click", function(){
+paint.addEventListener('click', () => {
     filling = true;
 });
 
+
 //pick the colors
-Array.from(colors).forEach(color =>
-    color.addEventListener("click", function(event){
-        for(i=0; i<colors.length; i++){
-            colors[i].classList.remove("on");
-        };
-        event.target.classList.add("on");
+colors.forEach(color =>
+    color.addEventListener('click', (event) => {
+        //make it to default setting
+        colors.forEach(eachColor => {
+            eachColor.classList.remove('on');
+        });
+
         const color = event.target.style.backgroundColor;
+        event.target.classList.add('on');
         ctx.strokeStyle = color;
         ctx.fillStyle = color;
     })
 );
 
-function startDrawing(){
-    drawing = true;
-};
-function stopDrawing(){
-    drawing = false;
-};
 
 //drawing
-function onMouseMove(event){
+const onMouseMove = (event) => {
     const x = event.offsetX;
     const y = event.offsetY;
     
@@ -83,17 +83,19 @@ function onMouseMove(event){
     };
 };
 
+
 //painting
-function handleCanvasClick(){
+const onCanvasClick = () => {
     if(filling){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
 };
 
+
 if(canvas){
-    canvas.addEventListener("mousemove", onMouseMove);
-    canvas.addEventListener("mousedown", startDrawing);
-    canvas.addEventListener("mouseup", stopDrawing);
-    canvas.addEventListener("mouseleave", stopDrawing);
-    canvas.addEventListener("click", handleCanvasClick);
+    canvas.addEventListener('mousedown', () => ( drawing = true ));
+    canvas.addEventListener('mouseup', () => ( drawing = false ));
+    canvas.addEventListener('mouseleave', () => ( drawing = false ));
+    canvas.addEventListener('mousemove', onMouseMove);
+    canvas.addEventListener('click', onCanvasClick);
 };
