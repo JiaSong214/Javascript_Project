@@ -65,7 +65,7 @@ div.drag_bar > span:nth-child(3) {
 
 #task_bar {
     position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 90;
-    width: 400px; height: 82px; padding: 10px 20px; background: rgb(255,255,255,0.5);
+    width: 350px; height: 82px; padding: 10px 20px; background: rgb(255,255,255,0.5);
     border-top-left-radius: 10px; border-top-right-radius: 10px;
     box-shadow: 3px 3px 20px -2px rgb(0, 0, 0);
     display: flex; justify-content: space-around;

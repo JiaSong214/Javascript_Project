@@ -47,13 +47,13 @@ elements.forEach((element, i) => {
 });
 
 taskBar_icons.forEach((eachIcon, i) => {
-    eachIcon.addEventListener('click', () => {
+    eachIcon.addEventListener('click', (event) => {
         if(elements[i].classList.contains('invisible')){
             elements[i].classList.remove('invisible');
-            this.classList.add('active');
+            event.target.classList.add('active');
         }else{
             elements[i].classList.add('invisible');
-            this.classList.remove('active');
+            event.target.classList.remove('active');
         }
     });
 });
