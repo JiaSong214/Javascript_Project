@@ -1,164 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="css/weather.css">
-    <link rel="stylesheet" href="css/calculator.css">
-    <link rel="stylesheet" href="css/todoList.css">
-    <link rel="stylesheet" href="css/paint.css">
-    <!-- <link rel="stylesheet" href="css/game.css"> -->
-    <link rel="stylesheet" href="css/index.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script> -->
-    <!-- <script defer src=https://cdn.JsDelivr.net/gh/bmoren/p5.collide2D/p5.collide2d.min.js></script> -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="css/weather.css" />
+    <link rel="stylesheet" href="css/calculator.css" />
+    <link rel="stylesheet" href="css/todoList.css" />
+    <link rel="stylesheet" href="css/paint.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <script defer src="js/weather.js"></script>
     <script defer src="js/calculator.js"></script>
     <script defer src="js/todoList.js"></script>
     <script defer src="js/paint.js"></script>
-    <!-- <script defer src="js/game.js"></script> -->
     <script defer src="js/index.js"></script>
     <title>Javascript Projects</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="container">
-        <section class="weather">
-            <div class="drag_bar">
-                <span>&times;</span>
-                <span></span>
-                <span></span>
+      <section id="weather">
+        <div class="dragbar">
+          <span class="dragbar__closeBtn">&times;</span>
+          <span></span>
+          <span></span>
+        </div>
+        <h1 class="weather__timezone">Timezone</h1>
+        <p class="weather__summary"></p>
+        <div class="weather__temperature-box">
+          <h2 class="weather__temperature">0</h2>
+          <span>o</span>
+        </div>
+        <ul class="weather__weekly">
+          <li>
+            <div class="weather__weekly__day">SUN</div>
+            <div class="weather__weekly__icon"></div>
+          </li>
+          <li>
+            <div class="weather__weekly__day"></div>
+            <div class="weather__weekly__icon"></div>
+          </li>
+          <li>
+            <div class="weather__weekly__day"></div>
+            <div class="weather__weekly__icon"></div>
+          </li>
+          <li>
+            <div class="weather__weekly__day"></div>
+            <div class="weather__weekly__icon"></div>
+          </li>
+          <li>
+            <div class="weather__weekly__day"></div>
+            <div class="weather__weekly__icon"></div>
+          </li>
+        </ul>
+      </section>
+      <section id="todoList">
+        <div class="dragbar">
+          <span class="dragbar__closeBtn">&times;</span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="todoList-container">
+          <div class="todoList__date">
+            <div>
+              <div class="todoList__date__date"></div>
+              <div>
+                <div class="todoList__date__month"></div>
+                <div class="todoList__date__year"></div>
+              </div>
             </div>
-            <h1 class="weather-timezone">Timezone</h1>
-            <p class="weather-summary"></p>
-            <div class="weather-temperature_section">
-                <h2 class="weather-temperature">0</h2>
-                <span>o</span>
-            </div>
-            <ul class="weather-weekly">
-                <li>
-                    <div class="weather-day">SUN</div>
-                    <div class="weather-icon"></div>
-                </li>
-                <li>
-                    <div class="weather-day"></div>
-                    <div class="weather-icon"></div>
-                </li>
-                <li>
-                    <div class="weather-day"></div>
-                    <div class="weather-icon"></div>
-                </li>
-                <li>
-                    <div class="weather-day"></div>
-                    <div class="weather-icon"></div>
-                </li>
-                <li>
-                    <div class="weather-day"></div>
-                    <div class="weather-icon"></div>
-                </li>
-            </ul>
-        </section>
-        <section class="calculator">
-            <div class="drag_bar">
-                <span>&times;</span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="calculator-result">
-                <p class="history_value"></p>
-                <p class="output_value"></p>
-            </div>
-            <div class="calculator-keyboard">
-                <button class="operator" id="clear">C</button>
-                <button class="operator" id="backspace">CE</button>
-                <button class="operator" id="%">%</button>
-                <button class="operator" id="/">&#247;</button>
-                <button class="number" id="7">7</button>
-                <button class="number" id="8">8</button>
-                <button class="number" id="9">9</button>
-                <button class="operator" id="*">&times;</button>
-                <button class="number" id="4">4</button>
-                <button class="number" id="5">5</button>
-                <button class="number" id="6">6</button>
-                <button class="operator" id="-">-</button>
-                <button class="number" id="1">1</button>
-                <button class="number" id="2">2</button>
-                <button class="number" id="3">3</button>
-                <button class="operator" id="+">+</button>
-                <button class="empty" id="empty"></button>
-                <button class="number" id="0">0</button>
-                <button class="empty" id="empty"></button>
-                <button class="operator" id="=">=</button>
-            </div>
-        </section>
-        <section class="todoList">
-            <div class="drag_bar">
-                <span>&times;</span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="todoList_container">
-                <div class="date_section">
-                    <div>
-                        <div class="todoList-date"></div>
-                        <div>
-                            <div class="todoList-month"></div>
-                            <div class="todoList-year"></div>
-                        </div>
-                    </div>
-                    <div class="todoList-day"></div>
-                </div>
-                <div class="list_section">
-                    <ul class="todoList-list">
-                    </ul>
-                    <form action="" class="add_todo">
-                        <input type="text" id="todoList-input" placeholder="Add To-do">
-                        <input class="todoList-addBtn" type="submit" value="+">
-                    </form>
-                </div>
-            </div>
-        </section>
-        <section class="paint invisible">
-            <div class="drag_bar">
-                <span>&times;</span>
-                <span></span>
-                <span></span>
-            </div>
-            <canvas class="paint_canvas"></canvas>
-            <div class="paint_controls">
-                <div class="tools">
-                    <button id="pencil"></button>
-                    <button id="pen"></button>
-                    <button id="marker"></button>
-                    <button id="paint"></button>
-                </div>
-                <div class="colorChips">
-                    <div class="color" style="background-color: black"> </div>
-                    <div class="color" style="background-color:white"></div>
-                    <div class="color" style="background-color:#ff3b30"></div>
-                    <div class="color" style="background-color:#ff9500"></div>
-                    <div class="color" style="background-color:#ffcc00"></div>
-                    <div class="color" style="background-color:#4cd963"></div>
-                    <div class="color" style="background-color:#5ac8fa"></div>
-                    <div class="color" style="background-color:#0579ff"></div>
-                    <div class="color" style="background-color:#5856d6 "></div>
-                </div>
-            </div>
-        </section>
-        <!-- <section class="game invisible">
-            <div class="drag_bar">
-                <span>&times;</span>
-                <span></span>
-                <span></span>
-            </div>
-            <div id="game_canvas_frame"></div>
-        </section> -->
+            <div class="todoList__date__day"></div>
+          </div>
+          <div class="todoList__todo">
+            <ul class="todoList__todo__list"></ul>
+            <form class="todoList__todo__form">
+              <input
+                type="text"
+                class="todoList__todo__form__input"
+                placeholder="Add To-do"
+              />
+              <button type="submit" class="todoList__todo__form__btn">+</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section id="calculator">
+        <div class="dragbar">
+          <span class="dragbar__closeBtn">&times;</span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="calculator__result">
+          <p class="calculator__result__history"></p>
+          <p class="calculator__result__output"></p>
+        </div>
+        <div class="calculator__keyboard">
+          <button class="calculator__keyboard__operator" id="clear">C</button>
+          <button class="calculator__keyboard__operator" id="backspace">
+            CE
+          </button>
+          <button class="calculator__keyboard__operator" id="%">%</button>
+          <button class="calculator__keyboard__operator" id="/">&#247;</button>
+          <button class="calculator__keyboard__number" id="7">7</button>
+          <button class="calculator__keyboard__number" id="8">8</button>
+          <button class="calculator__keyboard__number" id="9">9</button>
+          <button class="calculator__keyboard__operator" id="*">&times;</button>
+          <button class="calculator__keyboard__number" id="4">4</button>
+          <button class="calculator__keyboard__number" id="5">5</button>
+          <button class="calculator__keyboard__number" id="6">6</button>
+          <button class="calculator__keyboard__operator" id="-">-</button>
+          <button class="calculator__keyboard__number" id="1">1</button>
+          <button class="calculator__keyboard__number" id="2">2</button>
+          <button class="calculator__keyboard__number" id="3">3</button>
+          <button class="calculator__keyboard__operator" id="+">+</button>
+          <button></button>
+          <button class="calculator__keyboard__number" id="0">0</button>
+          <button></button>
+          <button class="calculator__keyboard__operator" id="=">=</button>
+        </div>
+      </section>
+      <section id="paint">
+        <div class="dragbar">
+          <span class="dragbar__closeBtn">&times;</span>
+          <span></span>
+          <span></span>
+        </div>
+        <canvas class="paint__canvas"></canvas>
+        <div class="paint__controls">
+          <div class="paint__controls__tools">
+            <div
+              class="paint__controls__tools__pencil"
+              data-name="pencil"
+            ></div>
+            <div class="paint__controls__tools__pen" data-name="pen"></div>
+            <div
+              class="paint__controls__tools__marker"
+              data-name="marker"
+            ></div>
+            <div class="paint__controls__tools__paint" data-name="paint"></div>
+          </div>
+          <div class="paint__controls__colorChips">
+            <div
+              class="paint__controls__colorChips__color"
+              style="background-color: black"
+            ></div>
+            <div
+              class="paint__controls__colorChips__color"
+              style="background-color: white"
+            ></div>
+            <div
+              class="paint__controls__colorChips__color"
+              style="background-color: #ff3b30"
+            ></div>
+            <div
+              class="paint__controls__colorChips__color"
+              style="background-color: #ff9500"
+            ></div>
+            <div
+              class="paint__controls__colorChips__color"
+              style="background-color: #ffcc00"
+            ></div>
+            <div
+              class="paint__controls__colorChips__color"
+              style="background-color: #4cd963"
+            ></div>
+            <div
+              class="paint__controls__colorChips__color"
+              style="background-color: #5ac8fa"
+            ></div>
+            <div
+              class="paint__controls__colorChips__color"
+              style="background-color: #0579ff"
+            ></div>
+            <div
+              class="paint__controls__colorChips__color"
+              style="background-color: #5856d6"
+            ></div>
+          </div>
+        </div>
+      </section>
+      <section id="game"></section>
     </div>
-    <div id="task_bar">
-        <div class="weather_icon"></div>
-        <div class="calculator_icon"></div>
-        <div class="todoList_icon"></div>
-        <div class="paint_icon"></div>
-        <!-- <div class="game_icon"></div> -->
+    <div id="taskbar">
+      <div class="taskbar__weather_icon" data-id="weather"></div>
+      <div class="taskbar__todoList_icon" data-id="todoList"></div>
+      <div class="taskbar__calculator_icon" data-id="calculator"></div>
+      <div class="taskbar__paint_icon" data-id="paint"></div>
     </div>
-</body>
+    <footer class="copyright">
+      <a
+        href="https://github.com/JiaSong214/Javascript_Project"
+        target="_blank"
+      >
+        &copy; 2020 Jia Song
+      </a>
+    </footer>
+  </body>
 </html>

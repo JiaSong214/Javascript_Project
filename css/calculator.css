@@ -1,31 +1,63 @@
-section.calculator {
-    width: 320px; height: 520px;
-    background: black; border-radius: 10px; 
+#calculator {
+  width: 320px;
+  height: 540px;
+  background: black;
+  border-radius: 10px;
 }
-div.calculator-result {
-    width: 100%; height: 120px; padding: 30px 20px 0;
+
+.calculator__result {
+  width: 100%;
+  height: 140px;
+  position: relative;
+  overflow: hidden;
 }
-p.history_value {
-    font-size: 28px; color: gray; text-align: right;
+
+.calculator__result__history {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  font-size: 28px;
+  color: gray;
+  text-align: right;
 }
-p.output_value {
-    font-size: 68px; color: white; text-align: right;
+
+.calculator__result__output {
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  color: white;
+  text-align: right;
 }
-div.calculator-keyboard {
-    height: 392.5px; padding: 20px;
-    display: grid; grid-template-columns: repeat(4,1fr); grid-template-rows: repeat(5,1fr); grid-gap: 10px;
+
+.calculator__keyboard {
+  height: 392.5px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 10px;
 }
-div.calculator-keyboard > button {
-    all: unset;
-    background: #333333; border-radius: 50%;
-    font-size: 24px; color: white; font-weight: 400; text-align: center;
-    cursor: pointer;
+
+.calculator__keyboard > button {
+  all: unset;
+  display: block;
+  background: #333333;
+  border-radius: 50%;
+  font-size: 24px;
+  color: white;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
 }
-div.calculator-keyboard .operator {
-    background: #f19939;
-    font-size: 30px;
+
+.calculator__keyboard__operator {
+  background: #f19939 !important;
+  font-size: 30px !important;
 }
-div.calculator-keyboard > button:nth-child(1), div.calculator-keyboard > button:nth-child(2), div.calculator-keyboard > button:nth-child(3){
-    background: #a5a5a5; 
-    font-size: 24px; color: black;
+
+.calculator__keyboard > button:nth-child(1),
+.calculator__keyboard > button:nth-child(2),
+.calculator__keyboard > button:nth-child(3) {
+  background: #a5a5a5 !important;
+  color: black !important;
 }

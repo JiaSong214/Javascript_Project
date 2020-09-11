@@ -1,55 +1,105 @@
-section.paint {
-    width: 618px; height: 600px;
-    position: relative;
-}
-canvas.paint_canvas { 
-    width: 100%; height: 100%; background: white;
-    border-radius: 10px;
-}
-div.paint_controls {
-    width: 100%; padding:  30px 20px; background: white; 
-    border-top: 1px solid rgb(225, 225, 225); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
-    display: flex; justify-content: space-between;
-    position: absolute; bottom: 0;
-    overflow: hidden;
-}
-div.tools {
-    display: flex; position: relative;
-}
-div.tools > button {
-    all: unset; position: absolute; top: 0;
-}
-div.tools > button#pencil {
-    width: 50px; height: 150px; top: -20px;
-    background: url("../img/pencil.png") no-repeat center center; background-size: contain;
-}
-div.tools > button#pen {
-    width: 50px; height: 150px; left: 50px;
-    background: url("../img/pen.png") no-repeat center center; background-size: contain;
-}
-div.tools > button#marker {
-    width: 50px; height: 150px; left: 100px;
-    background: url("../img/marker.png") no-repeat center center; background-size: contain;
-}
-div.tools > button#paint {
-    width: 60px; height: 150px; left: 150px;
-    background: url("../img/paint.png") no-repeat center center; background-size: contain;
-}
-div.colorChips {
-    display: flex; 
-}
-div.color {
-    width: 30px; height: 30px; margin-right: 5px; 
-    border-radius: 50%; box-shadow: -1px -1px 2px rgb(126, 126, 126);
-    position: relative;
-    cursor: pointer;
-}
-div.color.on {
-    box-shadow: -2px -2px 3px rgb(126, 126, 126);;
-}
-div.color.on::after {
-    content: ""; display: block;
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 23px; height: 23px; border-radius: 50px; border: 1px solid white;
+#paint {
+  width: 618px;
+  height: 600px;
+  position: relative;
 }
 
+.paint__canvas {
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 10px;
+}
+
+.paint__controls {
+  width: 100%;
+  padding: 30px 20px;
+  background: white;
+  border-top: 1px solid rgb(225, 225, 225);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.paint__controls__tools {
+  display: flex;
+  position: relative;
+}
+
+.paint__controls__tools > div {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.paint__controls__tools > div.active {
+  top: -20px;
+  transition: 0.3s;
+}
+
+.paint__controls__tools__pencil {
+  width: 50px;
+  height: 150px;
+  background: url('../img/pencil.png') no-repeat center center;
+  background-size: contain;
+}
+
+.paint__controls__tools__pen {
+  width: 50px;
+  height: 150px;
+  left: 50px;
+  background: url('../img/pen.png') no-repeat center center;
+  background-size: contain;
+}
+
+.paint__controls__tools__marker {
+  width: 50px;
+  height: 150px;
+  left: 100px;
+  background: url('../img/marker.png') no-repeat center center;
+  background-size: contain;
+}
+
+.paint__controls__tools__paint {
+  width: 60px;
+  height: 150px;
+  left: 150px;
+  background: url('../img/paint.png') no-repeat center center;
+  background-size: contain;
+}
+
+.paint__controls__colorChips {
+  display: flex;
+}
+
+.paint__controls__colorChips__color {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  border-radius: 50%;
+  box-shadow: -1px -1px 2px rgb(126, 126, 126);
+  position: relative;
+  cursor: pointer;
+}
+
+.paint__controls__colorChips__color.active {
+  box-shadow: -2px -2px 3px rgb(126, 126, 126);
+}
+
+.paint__controls__colorChips__color.active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 23px;
+  height: 23px;
+  border-radius: 50px;
+  border: 1px solid white;
+}

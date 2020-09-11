@@ -1,122 +1,222 @@
-//date
-const today = new Date();
-const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
-"JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-const dayNames = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+const todoList = (() => {
+  let id = 0;
 
-document.querySelector(".todoList-date").innerText = today.getDate();
-document.querySelector(".todoList-year").innerText = today.getFullYear();
-document.querySelector(".todoList-month").innerText = monthNames[today.getMonth()];
-document.querySelector(".todoList-day").innerText = dayNames[today.getDay()];
-
-const toDoList = document.querySelector(".todoList-list"); 
-const toDoForm = document.querySelector(".add_todo");
-const toDoInput = toDoForm.querySelector("#todoList-input");
-
-const TODOS_LS = 'toDos';
-let toDos = [];
-
-
-//handle form submit event
-toDoForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const submit_time = new Date();
-    const current_time = `at ${submit_time.getHours()}:${submit_time.getMinutes()} on ${monthNames[submit_time.getMonth()]} ${submit_time.getDate()}`;
-
-    addToDo('No', toDoInput.value, current_time);
-    toDoInput.value = '';
-}); 
-
-
-//handle add to-do evnet 
-const addToDo = (compelete, text, created_time) => {
-    const todo_item = document.createElement('li');
-    todo_item.classList.add('todo_item');
-    todo_item.id = toDos.length + 1;
-
-    const todo_text = document.createElement('p');
-    todo_text.classList.add('todo_text');
-    todo_text.innerText = text;
-
-    const todo_created_time = document.createElement('p');
-    todo_created_time.classList.add('todo_created_time');
-    todo_created_time.innerText = `Created ${created_time}`;
-
-    const compelete_todo = document.createElement('span');
-    compelete_todo.classList.add('compelete_todo');
-    if(compelete == 'Yes'){
-        todo_item.classList.add('compelete');
+  const Model = (() => {
+    //todo constructor
+    function Todo(title) {
+      this.id = id;
+      this.check = false;
+      this.title = title;
+      this.time = new Date();
     }
-    compelete_todo.addEventListener('click', compeleteToDo);
 
-    const remove_todo = document.createElement('span');
-    remove_todo.classList.add('remove_todo');
-    remove_todo.innerHTML='&times;'
-    remove_todo.addEventListener('click', removeToDo);
+    const todoModel = {
+      todoObj_LS: 'todo',
+      todoObj: [],
 
-    const todo_list = document.querySelector('.todoList-list');
-    todo_list.appendChild(todo_item);
+      getData: function () {
+        return JSON.parse(localStorage.getItem(this.todoObj_LS));
+      },
+      setData: function () {
+        localStorage.setItem(this.todoObj_LS, JSON.stringify(this.todoObj));
+      },
 
-    const todo_contents_box = document.createElement('div');
-    todo_contents_box.classList.add('todo_contents_box');
+      addData: function (title) {
+        const newTodo = new Todo(title);
+        this.todoObj.push(newTodo);
+        this.setData();
+      },
+      deleteData: function (id) {
+        const newTodoObj = this.getData().filter((todo) => {
+          return parseInt(todo.id) !== parseInt(id);
+        });
+        this.todoObj = newTodoObj;
+        this.setData();
+      },
+      changeCheck: function (id) {
+        const newTodoObj = this.getData().filter((todo) => {
+          return parseInt(todo.id) === parseInt(id)
+            ? { ...todo, check: !todo.check }
+            : todo;
+        });
+        this.todoObj = newTodoObj;
 
-    todo_item.append(compelete_todo, todo_contents_box, remove_todo);
-    todo_contents_box.append(todo_text, todo_created_time);
+        console.log(id);
+        console.log(this.todoObj);
 
-    const toDoObject =  {
-        id : todo_item.id,
-        compelete: compelete,
-        text : text,
-        created_time: created_time
+        this.setData();
+      },
     };
-    toDos.push(toDoObject);
-    saveToDos();
-}
 
+    return {
+      todoModel,
+    };
+  })();
 
-//handle remove to-do event
-const removeToDo = (event) => {
-    const removeBtn = event.target;
-    const todo_item = removeBtn.parentNode;
-    toDoList.removeChild(todo_item);
+  const View = (() => {
+    const setDate = () => {
+      const today = new Date();
+      const monthNames = [
+        'JAN',
+        'FEB',
+        'MAR',
+        'APR',
+        'MAY',
+        'JUN',
+        'JUL',
+        'AUG',
+        'SEP',
+        'OCT',
+        'NOV',
+        'DEC',
+      ];
+      const dayNames = [
+        'SUNDAY',
+        'MONDAY',
+        'TUESDAY',
+        'WEDNESDAY',
+        'THURSDAY',
+        'FRIDAY',
+        'SATURDAY',
+      ];
 
-    const cleanToDos =  toDos.filter((toDo) => { 
-        return parseInt(toDo.id) !== parseInt(todo_item.id);
-    });
-    toDos = cleanToDos;
-    saveToDos();
-}
+      document.querySelector(
+        '.todoList__date__date',
+      ).textContent = today.getDate();
+      document.querySelector(
+        '.todoList__date__year',
+      ).textContent = today.getFullYear();
+      document.querySelector('.todoList__date__month').textContent =
+        monthNames[today.getMonth()];
+      document.querySelector('.todoList__date__day').textContent =
+        dayNames[today.getDay()];
+    };
 
+    const renderTodo = (todoObj) => {
+      const todoList = document.querySelector('.todoList__todo__list');
+      todoList.textContent = '';
 
-//handle compelete to-do event
-const compeleteToDo = (event) => {
-    const compeleteBtn = event.target;
-    const item = compeleteBtn.parentNode;
+      todoObj.forEach((todo) => {
+        const todoList__item = document.createElement('li');
+        todoList__item.classList.add('todoList__todo__list__item');
+        todoList__item.setAttribute('data-id', todo.id);
 
-    if(toDos[item.id-1].compelete == "No"){
-        toDos[item.id-1].compelete = "Yes";
-        item.classList.add("compelete");
-    }else{
-        toDos[item.id-1].compelete = "No";
-        item.classList.remove("compelete");
-    }
-    saveToDos();
-}
+        const todoList__title = document.createElement('p');
+        todoList__title.classList.add('todoList__todo__list__item__title');
+        todoList__title.textContent = todo.title;
 
+        const todoList__time = document.createElement('p');
+        todoList__time.classList.add('todoList__todo__list__item__time');
+        todoList__time.textContent = `Created ${todo.time}`;
 
-//save in user's local storage
-const saveToDos = () => {
-    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
-};
+        const todoList__checkBtn = document.createElement('span');
+        todoList__checkBtn.classList.add(
+          'todoList__todo__list__item__checkBtn',
+        );
+        if (todo.check === true) {
+          todoList__item.classList.add('check');
+        } else {
+          todoList__item.classList.remove('check');
+        }
+        todoList__checkBtn.addEventListener('click', () =>
+          Controller.checkTodo(todo.id),
+        );
 
+        const todoList__deleteBtn = document.createElement('span');
+        todoList__deleteBtn.classList.add(
+          'todoList__todo__list__item__deleteBtn',
+        );
+        todoList__deleteBtn.innerHTML = '&times;';
+        todoList__deleteBtn.addEventListener('click', () =>
+          Controller.deleteTodo(todo.id),
+        );
 
-//get user's local storage to-do list when window loaded
-if(localStorage.getItem(TODOS_LS) !== null) {
-    JSON.parse(localStorage.getItem(TODOS_LS)).forEach((toDo) => {
-        addToDo(toDo.compelete, toDo.text, toDo.created_time);
-    });
-}else{
-    addToDo("Yes", "Study Javascript :)", "a month ago");
-    addToDo("No", "Go for a walk", "3 days ago");
-};
+        todoList.appendChild(todoList__item);
+
+        const todo_contents_box = document.createElement('div');
+        todo_contents_box.classList.add('todoList__todo__list__item__box');
+
+        todoList__item.append(
+          todoList__checkBtn,
+          todo_contents_box,
+          todoList__deleteBtn,
+        );
+        todo_contents_box.append(todoList__title, todoList__time);
+      });
+    };
+
+    return {
+      setDate,
+      renderTodo,
+    };
+  })();
+
+  const Controller = (() => {
+    const submitForm = (e) => {
+      e.preventDefault();
+
+      const todo__input = todo__form.querySelector(
+        '.todoList__todo__form__input',
+      );
+      Model.todoModel.addData(todo__input.value);
+      todo__input.value = '';
+
+      const newTodoObj = Model.todoModel.getData();
+      View.renderTodo(newTodoObj);
+
+      id++;
+    };
+
+    const deleteTodo = (id) => {
+      Model.todoModel.deleteData(id);
+      const newTodoObj = Model.todoModel.getData();
+      View.renderTodo(newTodoObj);
+    };
+
+    const checkTodo = (id) => {
+      Model.todoModel.changeCheck(id);
+      const newTodoObj = Model.todoModel.getData();
+      View.renderTodo(newTodoObj);
+    };
+
+    const firstRender = () => {
+      const userLocalStorage = Model.todoModel.getData();
+      if (userLocalStorage !== null) {
+        Model.todoModel.todoObj.push(...userLocalStorage);
+        View.renderTodo(userLocalStorage);
+      } else {
+        const defaultData = [
+          {
+            id: 1,
+            check: true,
+            title: 'Make a To-do list',
+            time: '2020-09-11',
+          },
+          {
+            id: 2,
+            check: false,
+            title: 'Study Node.js',
+            time: 'yesterday',
+          },
+        ];
+        Model.todoModel.todoObj.push(...defaultData);
+        Model.todoModel.setData();
+        const newData = Model.todoModel.getData();
+        View.renderTodo(newData);
+      }
+    };
+
+    const todo__form = document.querySelector('.todoList__todo__form');
+    todo__form.addEventListener('submit', (e) => submitForm(e));
+
+    return {
+      firstRender,
+      deleteTodo,
+      checkTodo,
+    };
+  })();
+
+  Controller;
+  View.setDate();
+  Controller.firstRender();
+})();

@@ -1,101 +1,159 @@
-const canvas = document.querySelector(".paint_canvas");
-const ctx = canvas.getContext("2d");
-const tools_container = document.querySelector(".tools");
-const tools = tools_container.querySelectorAll("button");
-const pencil = tools_container.querySelector("#pencil");
-const pen = tools_container.querySelector("#pen");
-const marker = tools_container.querySelector("#marker");
-const paint = tools_container.querySelector("#paint");
-const colors = document.querySelectorAll(".color");
+const paint = (() => {
+  const Model = (() => {
+    const style = {
+      color: 'black',
+      active: false,
+      condition: 'drawing',
+      lineWidth: 1,
+    };
 
-canvas.width = 618;
-canvas.height = 600;
+    return style;
+  })();
 
-//default setting
-ctx.fillStyle = "white";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-ctx.strokeStyle = "black";
-ctx.fillStyle = "white";
-ctx.lineWidth = 1;
+  const canvas = document.querySelector('.paint__canvas');
+  const ctx = canvas.getContext('2d');
 
-let drawing = false;
-let filling = false;
+  const View = (() => {
+    const firstSetting = () => {
+      canvas.width = 618;
+      canvas.height = 600;
 
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    };
 
-//pick a tool
-tools.forEach(tool => {
-    tool.addEventListener('click', (event) => {
-        //make everything to default setting
-        tools.forEach(eachTool => {
-            eachTool.style.top = '0px';
-            drawing = false;
-            filling = false;
-            ctx.globalAlpha = 1;
-        })
-        event.target.style.top = '-20px';
-    })
-})
+    const drawLine = (e) => {
+      const x = e.offsetX;
+      const y = e.offsetY;
 
+      let condition = Model.condition;
 
-//tool setting
-pencil.addEventListener('click', () => {
-    ctx.lineWidth = 1;
-});
-pen.addEventListener('click', () => {
-    ctx.lineWidth = 3;
-});
-marker.addEventListener('click', () => {
-    ctx.lineWidth = 10;
-    ctx.globalAlpha = 0.01;
-});
-paint.addEventListener('click', () => {
-    filling = true;
-});
+      if (condition === 'drawing' && Model.active === true) {
+        ctx.strokeStyle = Model.color;
+        ctx.lineWidth = Model.lineWidth;
 
-
-//pick the colors
-colors.forEach(color =>
-    color.addEventListener('click', (event) => {
-        //make it to default setting
-        colors.forEach(eachColor => {
-            eachColor.classList.remove('on');
-        });
-
-        const color = event.target.style.backgroundColor;
-        event.target.classList.add('on');
-        ctx.strokeStyle = color;
-        ctx.fillStyle = color;
-    })
-);
-
-
-//drawing
-const onMouseMove = (event) => {
-    const x = event.offsetX;
-    const y = event.offsetY;
-    
-    if(!drawing){
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-    }else{
         ctx.lineTo(x, y);
         ctx.stroke();
+      } else {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+      }
     };
-};
 
+    const paintCanvas = () => {
+      let condition = Model.condition;
 
-//painting
-const onCanvasClick = () => {
-    if(filling){
+      if (condition === 'painting' && Model.active === true) {
+        ctx.fillStyle = Model.color;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
     };
-};
 
+    const activeColorChips = (e) => {
+      const colorChips = document.querySelectorAll(
+        '.paint__controls__colorChips__color',
+      );
 
-if(canvas){
-    canvas.addEventListener('mousedown', () => ( drawing = true ));
-    canvas.addEventListener('mouseup', () => ( drawing = false ));
-    canvas.addEventListener('mouseleave', () => ( drawing = false ));
-    canvas.addEventListener('mousemove', onMouseMove);
-    canvas.addEventListener('click', onCanvasClick);
-};
+      colorChips.forEach((color) => {
+        color.classList.remove('active');
+      });
+
+      e.target.classList.add('active');
+    };
+
+    const activeTool = (e) => {
+      const tools = document.querySelectorAll('.paint__controls__tools > div');
+      tools.forEach((tool) => {
+        tool.classList.remove('active');
+        console.log('remove');
+      });
+      e.target.classList.add('active');
+    };
+
+    return {
+      firstSetting,
+      drawLine,
+      paintCanvas,
+      activeColorChips,
+      activeTool,
+    };
+  })();
+
+  const Controller = (() => {
+    const changeTool = (e) => {
+      switch (e.target.dataset.name) {
+        case 'pencil':
+          Model.active = false;
+          Model.condition = 'drawing';
+          Model.lineWidth = 1;
+          break;
+        case 'pen':
+          Model.active = false;
+          Model.condition = 'drawing';
+          Model.lineWidth = 3;
+          break;
+        case 'marker':
+          Model.active = false;
+          Model.condition = 'drawing';
+          Model.lineWidth = 10;
+          break;
+        case 'paint':
+          Model.condition = 'painting';
+          break;
+      }
+      View.activeTool(e);
+    };
+
+    const changeColor = (e) => {
+      const color = e.target.style.backgroundColor;
+      View.activeColorChips(e);
+      Model.color = color;
+    };
+
+    const tools = document.querySelectorAll('.paint__controls__tools > div');
+    const colors = document.querySelectorAll(
+      '.paint__controls__colorChips__color',
+    );
+
+    tools.forEach((tool) => {
+      return tool.addEventListener('click', (e) => changeTool(e));
+    });
+
+    colors.forEach((color) => {
+      return color.addEventListener('click', (e) => changeColor(e));
+    });
+
+    canvas.addEventListener('mousedown', () => {
+      Model.active = true;
+    });
+    canvas.addEventListener('mouseup', () => {
+      Model.active = false;
+    });
+    canvas.addEventListener('mousemove', function (e) {
+      View.drawLine(e);
+    });
+
+    canvas.addEventListener('mouseleave', () => {
+      Model.active = false;
+    });
+
+    canvas.addEventListener('click', () => {
+      if (Model.condition === 'painting') {
+        Model.active = true;
+      }
+
+      View.paintCanvas();
+    });
+
+    return {
+      changeTool,
+      changeColor,
+    };
+  })();
+
+  View.firstSetting();
+
+  if (canvas) {
+    Controller;
+  }
+})();

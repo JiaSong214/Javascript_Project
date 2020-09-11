@@ -1,116 +1,210 @@
 * {
-    margin: 0; padding: 0; box-sizing: border-box; list-style: none;
+  box-sizing: border-box;
 }
-* > body { 
-    all: unset;
-    width: 100vw; height: 100vh;
-    display: flex; justify-content: center; 
-    background: url("../img/background.jpg") no-repeat; background-size: cover;
-    position: relative;
-    overflow: hidden;
+body,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+ul,
+li {
+  padding: 0;
+  margin: 0;
 }
-#container {
-    width: 1300px; height: 750px;
-    align-self: center;
-    position: relative;
-    font-family: sans-serif;
+
+ul {
+  list-style: none;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background: url('../img/background.jpg') no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: sans-serif;
+}
+
 #container > section {
-    display: block;
-    position: absolute;
-    box-shadow: 3px 3px 20px -2px rgb(0, 0, 0);
-}
-#container > section.invisible {
-    display: none;
-}
-#container > section.weather {
-    left: 0; top: 0;
-}
-#container > section.calculator {
-    left: 680px; top: 0;
-}
-#container > section.todoList {
-    left: 340px; top: 0;
-}
-#container > section.paint {
-    right: 10%; top: 50px;
-}
-#container > section.game {
-    left: 20%; top: 30%;
+  display: block;
+  position: absolute;
+  box-shadow: 3px 3px 50px -10px black;
 }
 
-div.drag_bar {
-    position: absolute; top: -13px; left: 0;
-    width: 100%; height: 23px; background: linear-gradient(#e9eeed, #cbcdcf);
-    border-top-left-radius: 10px; border-top-right-radius: 10px;
-    display: flex; align-items: center;
-    cursor: grab;
-}
-div.drag_bar > span {
-    width: 12px; height: 12px; border-radius: 50%;
-    margin-right: 5px;
-}
-div.drag_bar > span:nth-child(1) {
-    margin-left: 10px;
-    background: #ee6665; border: 1px solid #cc5656;
-    font-size: 12px; color: #753030; font-weight: bold; line-height: 1; text-indent: 1.5px;
-    cursor: pointer;
-}
-div.drag_bar > span:nth-child(2) {
-    background: #f1c14f; border: 1px solid #cca241;
-}
-div.drag_bar > span:nth-child(3) {
-    background: #62cb5d; border: 1px solid #57b352;
+#weather {
+  left: 50px;
+  top: 50px;
 }
 
-#task_bar {
-    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); z-index: 90;
-    width: 350px; height: 82px; padding: 10px 20px; background: rgb(255,255,255,0.5);
-    border-top-left-radius: 10px; border-top-right-radius: 10px;
-    box-shadow: 3px 3px 20px -2px rgb(0, 0, 0);
-    display: flex; justify-content: space-around;
+#calculator {
+  left: calc(680px + 50px);
+  top: 50px;
 }
-#task_bar > div {
-    width: 60px; height: 60px;
-    position: relative;
-    cursor: pointer;
-}
-#task_bar > div::after {
-    display: block; content: "";
-    width: 6px; height: 6px; background: transparent;
-    border-radius: 50%;
-    position: absolute; bottom: -10px; left: 27px;
-    transition: .5s;
-}
-#task_bar > div.active::after {
-    background: rgb(48, 48, 48);
-    transition: .5s;
-}
-div.weather_icon {
-    background: url("../img/weather_icon.png") no-repeat; background-size: contain;
-}
-div.calculator_icon {
-    background: url("../img/calculator_icon.png") no-repeat; background-size: contain;
-}
-div.todoList_icon {
-    background: url("../img/todoList_icon.png") no-repeat; background-size: contain;
-}
-div.paint_icon {
-    background: url("../img/paint_icon.png") no-repeat; background-size: contain; 
-    position: relateive; animation: icon_animation 5s ease-in 3s infinite;
-}
-div.game_icon {
-    background: url("../img/game_icon.png") no-repeat; background-size: contain;
-    position: relateive; animation: icon_animation 5s ease-in 5s infinite;
 
+#todoList {
+  left: calc(340px + 50px);
+  top: 50px;
 }
-@keyframes icon_animation{
-    0% { left: -3px }
-    1% { left: 3px; }
-    2% { left: -3px; }
-    3% { left: 3px; }
-    4% { left: -3px; }
-    5% { left: 3px; }
-    6% { left: 0; }
-    100% { left: 0; }
+
+#paint {
+  right: 10%;
+  top: 150px;
+}
+
+.dragbar {
+  width: 100%;
+  height: 22px;
+  background: linear-gradient(#e9eeed, #cbcdcf);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: absolute;
+  top: -13px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  cursor: grab;
+}
+
+.dragbar > span {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 90;
+}
+
+.dragbar__closeBtn {
+  margin-left: 10px;
+  background: #ee6665;
+  border: 1px solid #cc5656;
+  font-size: 12px;
+  color: #753030;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dragbar > span:nth-child(2) {
+  background: #f1c14f;
+  border: 1px solid #cca241;
+}
+
+.dragbar > span:nth-child(3) {
+  background: #62cb5d;
+  border: 1px solid #57b352;
+}
+
+#taskbar {
+  width: 350px;
+  height: 82px;
+  padding: 10px 20px;
+  background: rgb(255, 255, 255, 0.5);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 3px 3px 20px -2px rgb(0, 0, 0);
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  z-index: 90;
+  display: flex;
+  justify-content: space-around;
+}
+
+#taskbar > div {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  z-index: 91;
+  position: relative;
+  animation: icon_animation 2s ease-in infinite;
+  cursor: pointer;
+}
+
+#taskbar > div.active {
+  animation: none;
+}
+
+#taskbar > div::after {
+  display: block;
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -10px;
+  left: 27px;
+  transition: 0.5s;
+}
+
+#taskbar > div.active::after {
+  background: rgb(48, 48, 48);
+
+  transition: background-color 0.5s;
+}
+
+.taskbar__weather_icon {
+  background: url('../img/weather_icon.png') no-repeat;
+  background-size: contain;
+}
+
+.taskbar__calculator_icon {
+  background: url('../img/calculator_icon.png') no-repeat;
+  background-size: contain;
+}
+
+.taskbar__todoList_icon {
+  background: url('../img/todoList_icon.png') no-repeat;
+  background-size: contain;
+}
+
+.taskbar__paint_icon {
+  background: url('../img/paint_icon.png') no-repeat;
+  background-size: contain;
+}
+
+@keyframes icon_animation {
+  0% {
+    top: 0px;
+  }
+  10% {
+    top: -20px;
+  }
+  20% {
+    top: 0px;
+  }
+  30% {
+    top: -20px;
+  }
+  40% {
+    top: 0;
+  }
+  100% {
+    top: 0px;
+  }
+}
+
+.copyright {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  font-size: 16px;
+  color: white;
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0.5;
 }
