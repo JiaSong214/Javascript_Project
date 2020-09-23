@@ -1,5 +1,5 @@
 const todoList = (() => {
-  let id = 0;
+  let id = 2;
 
   const Model = (() => {
     //todo constructor
@@ -9,6 +9,10 @@ const todoList = (() => {
       this.title = title;
       this.time = new Date();
     }
+
+    // Todo.prototype.changeCheck = () => {
+    //   this.check = !this.check;
+    // };
 
     const todoModel = {
       todoObj_LS: 'todo',
@@ -22,6 +26,8 @@ const todoList = (() => {
       },
 
       addData: function (title) {
+        id++;
+
         const newTodo = new Todo(title);
         this.todoObj.push(newTodo);
         this.setData();
@@ -34,16 +40,12 @@ const todoList = (() => {
         this.setData();
       },
       changeCheck: function (id) {
-        const newTodoObj = this.getData().filter((todo) => {
-          return parseInt(todo.id) === parseInt(id)
+        const newTodoObj = this.getData().map((todo) =>
+          parseInt(todo.id) === parseInt(id)
             ? { ...todo, check: !todo.check }
-            : todo;
-        });
+            : todo,
+        );
         this.todoObj = newTodoObj;
-
-        console.log(id);
-        console.log(this.todoObj);
-
         this.setData();
       },
     };
@@ -163,8 +165,6 @@ const todoList = (() => {
 
       const newTodoObj = Model.todoModel.getData();
       View.renderTodo(newTodoObj);
-
-      id++;
     };
 
     const deleteTodo = (id) => {
@@ -187,13 +187,13 @@ const todoList = (() => {
       } else {
         const defaultData = [
           {
-            id: 1,
+            id: 0,
             check: true,
             title: 'Make a To-do list',
             time: '2020-09-11',
           },
           {
-            id: 2,
+            id: 1,
             check: false,
             title: 'Study Node.js',
             time: 'yesterday',

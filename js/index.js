@@ -6,7 +6,7 @@ const index = (() => {
     };
 
     const taskbar = {
-      activeApp: ['weather', 'todoList'],
+      activeApp: ['weather', 'todoList', 'calculator'],
       addActiveApp: function (appID) {
         const activated = this.activeApp.some((app) => app === appID);
         if (!activated) {

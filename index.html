@@ -4,15 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Shadows+Into+Light+Two&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/weather.css" />
     <link rel="stylesheet" href="css/calculator.css" />
     <link rel="stylesheet" href="css/todoList.css" />
     <link rel="stylesheet" href="css/paint.css" />
+    <link rel="stylesheet" href="css/game.css" />
     <link rel="stylesheet" href="css/index.css" />
     <script defer src="js/weather.js"></script>
     <script defer src="js/calculator.js"></script>
     <script defer src="js/todoList.js"></script>
     <script defer src="js/paint.js"></script>
+    <script defer src="js/game.js"></script>
     <script defer src="js/index.js"></script>
     <title>Javascript Projects</title>
   </head>
@@ -178,13 +184,43 @@
           </div>
         </div>
       </section>
-      <section id="game"></section>
+      <section id="game">
+        <div class="dragbar">
+          <span class="dragbar__closeBtn">&times;</span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="game__overlay --active"></div>
+        <form class="game__playerName-form --active">
+          <h1 class="game__playerName-form__title">Tic Tac Toe!</h1>
+          <div class="game__playerName-form__input-box">
+            <label for="player1">Player 1</label>
+            <input type="text" placeholder="Name" id="player1" />
+          </div>
+          <div class="game__playerName-form__input-box">
+            <label for="player2">Player 2</label>
+            <input type="text" placeholder="Name" id="player2" />
+          </div>
+          <button type="submit" class="game__playerName-form__btn">
+            Play Game
+          </button>
+        </form>
+        <h1 class="game__title">Tic Tac Toe</h1>
+        <div class="game__gameBoard"></div>
+        <div class="game__players"></div>
+        <div class="game__result">
+          <p class="game__result__winner">Player 1 Won!</p>
+          <button class="game__result__restart">Restart!</button>
+        </div>
+      </section>
+      <section id="error"></section>
     </div>
     <div id="taskbar">
       <div class="taskbar__weather_icon" data-id="weather"></div>
       <div class="taskbar__todoList_icon" data-id="todoList"></div>
       <div class="taskbar__calculator_icon" data-id="calculator"></div>
       <div class="taskbar__paint_icon" data-id="paint"></div>
+      <div class="taskbar__game_icon" data-id="game"></div>
     </div>
     <footer class="copyright">
       <a
